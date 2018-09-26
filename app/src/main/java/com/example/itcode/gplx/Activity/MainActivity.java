@@ -1,7 +1,9 @@
-package com.example.itcode.gplx;
+package com.example.itcode.gplx.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.itcode.gplx.R;
 
 public class MainActivity extends AppCompatActivity {
 
