@@ -1,2 +1,7 @@
 # GPLX
-Ứng dụng ôn thi giấy phép lái xe online
+ỨNG DỤNG ÔN THI BẰNG LÁI XE ONLINE
+Member :
+	Nguyễn Văn Hảo
+	Nguyễn Thành Danh
+	Đỗ Trường Thiên
+	Bùi Ngọc 
