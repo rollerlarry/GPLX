@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 //Test
+//Máy tính Danh cùi vl
 /**
  * Instrumented test, which will execute on an Android device.
  *
