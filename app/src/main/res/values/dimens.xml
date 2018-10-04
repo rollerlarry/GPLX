@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="test"></dimen>
+    <!--Flash Screen-->
+    <dimen name="widthLogo">215dp</dimen>
+    <dimen name="heightLogo">190dp</dimen>
+    <dimen name="titleMarginTop">50dp</dimen>
+    <dimen name="titleTextSize">22dp</dimen>
 </resources>

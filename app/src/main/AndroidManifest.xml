@@ -9,13 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.FlashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.HomeActivity" />
+        <activity android:name=".Activity.RandomExamActivity" />
+        <activity android:name=".Activity.ExamForGroupActivity" />
+        <activity android:name=".Activity.LearnTheoryActivity" />
+        <activity android:name=".Activity.LearnPracticeActivity" />
+        <activity android:name=".Activity.ExamTipsActivity" />
+        <activity android:name=".Activity.SaveQuestionActivity"></activity>
     </application>
 
 </manifest>

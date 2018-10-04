@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#05C3F9</color>
+    <color name="colorPrimaryDark">#05C3F9</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--Flash Screen-->
+    <color name="colorBgFlashScreen">#FFFFFF</color>
+    <color name="colorTitleFlashScreen">#FFFFFF</color>
+
+    <!--Card View-->
+    <color name="colorCardGreen">#00BFA5</color>
+    <color name="colorCardYellow">#FFB300</color>
+    <color name="colorCardPurple">#7C4DFF</color>
+    <color name="colorViewLine">#EDEDED</color>
+    <color name="colorDark">#BDBDBD</color>
+
 </resources>
