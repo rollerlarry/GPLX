@@ -46,14 +46,14 @@
         >
         <Button
             android:id="@+id/btnHome"
-            android:layout_width="256px"
+            android:layout_width="128dp"
             android:layout_height="@dimen/layoutHightButtonHome"
             android:text="@string/textButtonHome"
             android:background="@drawable/button_custom_background_selected"
             />
         <Button
             android:id="@+id/btnInfo"
-            android:layout_width="256px"
+            android:layout_width="128dp"
             android:layout_height="@dimen/layoutHightButtonInfo"
             android:text="@string/textButtonInfo"
             android:background="@drawable/button_custom_background_nonselected"
@@ -61,7 +61,7 @@
             />
         <Button
             android:id="@+id/btnContact"
-            android:layout_width="256px"
+            android:layout_width="128dp"
             android:layout_height="@dimen/layoutHightButtonContact"
             android:text="@string/textButtonContact"
             android:background="@drawable/button_custom_background_nonselected"
