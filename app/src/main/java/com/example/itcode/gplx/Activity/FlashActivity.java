@@ -24,7 +24,7 @@ public class FlashActivity extends AppCompatActivity {
         ivLogo = findViewById(R.id.ivLogo);
         tvTitle = findViewById(R.id.tvTitle);
 
-        Animation animation = AnimationUtils.loadAnimation(this,R.anim.my_transition);
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.flash_screen_transition);
         ivLogo.startAnimation(animation);
         tvTitle.startAnimation(animation);
         Intent intentMain = new Intent(this,HomeActivity.class);

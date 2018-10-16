@@ -1,47 +1,80 @@
 package com.example.itcode.gplx.Activity;
 
-import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 
+import com.example.itcode.gplx.Fragment.ContactFragment;
+import com.example.itcode.gplx.Fragment.HomeFragment;
+import com.example.itcode.gplx.Fragment.InfoFragment;
 import com.example.itcode.gplx.R;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-    private CardView cvRandomExam, cvExamForGroup, cvLearnTheory, cvLearnPractice, cvExamTips, cvSaveQuestion;
+    private Button btnHome, btnInfo, btnContact;
+    private FragmentManager fragmentManager;
+    private android.support.v4.app.FragmentTransaction fragmentTransaction;
+    private Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        cvRandomExam = findViewById(R.id.cvRandomExam);
-        cvExamForGroup = findViewById(R.id.cvExamForGroup);
-        cvLearnTheory = findViewById(R.id.cvLearnTheory);
-        cvLearnPractice = findViewById(R.id.cvLearnPractice);
-        cvExamTips = findViewById(R.id.cvExamTips);
-        cvSaveQuestion = findViewById(R.id.cvSaveQuestion);
+        btnHome = findViewById(R.id.btnHome);
+        btnInfo = findViewById(R.id.btnInfo);
+        btnContact = findViewById(R.id.btnContact);
 
-        cvRandomExam.setOnClickListener(this);
-        cvExamForGroup.setOnClickListener(this);
-        cvLearnTheory.setOnClickListener(this);
-        cvLearnPractice.setOnClickListener(this);
-        cvExamTips.setOnClickListener(this);
-        cvSaveQuestion.setOnClickListener(this);
+        btnHome.setOnClickListener(this);
+        btnInfo.setOnClickListener(this);
+        btnContact.setOnClickListener(this);
+
+
+        fragmentManager = getSupportFragmentManager();
+        fragment = new HomeFragment();
+        replaceFragment();
+
 
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent;
-
         switch (v.getId()){
-            case R.id.cvRandomExam: intent = new Intent(this,RandomExamActivity.class);startActivity(intent); break;
-            case R.id.cvExamForGroup: intent = new Intent(this,ExamForGroupActivity.class);startActivity(intent); break;
-            case R.id.cvLearnTheory: intent = new Intent(this,LearnTheoryActivity.class);startActivity(intent); break;
-            case R.id.cvLearnPractice: intent = new Intent(this,LearnPracticeActivity.class);startActivity(intent); break;
-            case R.id.cvExamTips: intent = new Intent(this,ExamTipsActivity.class);startActivity(intent); break;
-            case R.id.cvSaveQuestion: intent = new Intent(this,SaveQuestionActivity.class);startActivity(intent); break;
+            case R.id.btnHome :
+                fragment = new HomeFragment();
+                changeStatus(btnHome, btnInfo, btnContact);
+                replaceFragment();
+                break;
+            case R.id.btnInfo :
+                fragment = new InfoFragment();
+                changeStatus(btnInfo, btnHome, btnContact);
+                replaceFragment();
+                break;
+            case R.id.btnContact :
+                fragment = new ContactFragment();
+                changeStatus(btnContact, btnHome, btnInfo);
+                replaceFragment();
+                break;
         }
+    }
+
+    public void replaceFragment(){
+        //Replace Fragment
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameContent, fragment);
+        fragmentTransaction.commit();
+    }
+
+    public void changeStatus(Button btnSelected, Button btnNotSelected1, Button btnNotSelected2){
+        //Properties button selected
+        btnSelected.setBackground(getDrawable(R.drawable.button_custom_background_selected));
+        btnSelected.setTextColor(getColor(R.color.black));
+
+        //Properties button not selected
+        btnNotSelected1.setBackground(getDrawable(R.drawable.button_custom_background_nonselected));
+        btnNotSelected2.setBackground(getDrawable(R.drawable.button_custom_background_nonselected));
+        btnNotSelected1.setTextColor(getColor(R.color.white));
+        btnNotSelected2.setTextColor(getColor(R.color.white));
     }
 }

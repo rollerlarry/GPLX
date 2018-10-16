@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#05C3F9</color>
-    <color name="colorPrimaryDark">#05C3F9</color>
+    <color name="colorPrimary">#699AEE</color>
+    <color name="colorPrimaryDark">#699AEE</color>
     <color name="colorAccent">#FF4081</color>
 
     <!--Flash Screen-->
@@ -14,5 +14,10 @@
     <color name="colorCardPurple">#7C4DFF</color>
     <color name="colorViewLine">#EDEDED</color>
     <color name="colorDark">#BDBDBD</color>
+
+    <!--Color List Basic-->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="backgroundTitle">#3F42DF</color>
 
 </resources>

@@ -3,4 +3,14 @@
 
     <!--Flash Screen-->
     <string name="textTitle">ỨNG DỤNG ÔN THI CHUẨN TIN HỌC</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="update_later">update_later</string>
+    <string name="subTitle">Chuẩn hóa tin học đầu ra sinh viên</string>
+    <string name="title">ỨNG DỤNG ÔN THI TIN HỌC</string>
+    <string name="textButtonHome">TRANG CHỦ</string>
+    <string name="textButtonInfo">THÔNG TIN</string>
+    <string name="textButtonContact">BÁO LỖI</string>
+    <string name="Copyright">Copyright 2018 by ITCode Team</string>
 </resources>
