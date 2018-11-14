@@ -10,7 +10,10 @@ import android.widget.Button;
 import com.example.itcode.gplx.Fragment.ContactFragment;
 import com.example.itcode.gplx.Fragment.HomeFragment;
 import com.example.itcode.gplx.Fragment.InfoFragment;
+import com.example.itcode.gplx.Helper.DBHelper;
 import com.example.itcode.gplx.R;
+
+import java.io.IOException;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnHome, btnInfo, btnContact;
@@ -34,6 +37,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         fragmentManager = getSupportFragmentManager();
         fragment = new HomeFragment();
         replaceFragment();
+
+        DBHelper dbHelper = new DBHelper(this);
+        try {
+            dbHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -68,12 +78,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     public void changeStatus(Button btnSelected, Button btnNotSelected1, Button btnNotSelected2){
         //Properties button selected
-        btnSelected.setBackground(getDrawable(R.drawable.button_custom_background_selected));
+        btnSelected.setBackground(getDrawable(R.drawable.round_button_custom_selected));
         btnSelected.setTextColor(getColor(R.color.black));
 
         //Properties button not selected
-        btnNotSelected1.setBackground(getDrawable(R.drawable.button_custom_background_nonselected));
-        btnNotSelected2.setBackground(getDrawable(R.drawable.button_custom_background_nonselected));
+        btnNotSelected1.setBackground(getDrawable(R.drawable.round_button_custom_nonselected));
+        btnNotSelected2.setBackground(getDrawable(R.drawable.round_button_custom_nonselected));
         btnNotSelected1.setTextColor(getColor(R.color.white));
         btnNotSelected2.setTextColor(getColor(R.color.white));
     }

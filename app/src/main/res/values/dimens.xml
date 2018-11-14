@@ -10,9 +10,9 @@
     <dimen name="layoutHightButtonHome">45dp</dimen>
     <dimen name="layoutHightButtonInfo">45dp</dimen>
     <dimen name="layoutHightButtonContact">45dp</dimen>
-    <dimen name="layoutHight">145dp</dimen>
-    <dimen name="layoutWidthCardView">110dp</dimen>
-    <dimen name="layoutHightCardView">120dp</dimen>
+    <dimen name="layoutHight">150dp</dimen>
+    <dimen name="layoutWidthCardView">120dp</dimen>
+    <dimen name="layoutHightCardView">140dp</dimen>
     <dimen name="radiusCardView">10dp</dimen>
     <dimen name="layoutMarginRightCardView">20dp</dimen>
     <dimen name="elevationCardView">20dp</dimen>

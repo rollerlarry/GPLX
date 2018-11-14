@@ -1,101 +1,111 @@
 package com.example.itcode.gplx.DTO;
 
-public class CauHoi {
-    private int idCauHoi;
-    private int idLoaiCauHoi;
-    private String cauHoiText;
-    private String dapAnA;
-    private String dapAnB;
-    private String dapAnC;
-    private String dapAnD;
-    private String dapAnDung;
-    private String cauHoiHinhAnh;
-    private String cauTraLoi;
+public class Question {
+    private int questionID;
+    private int questionTypeID;
+    private String textQuestion;
+    private String answerA;
+    private String answerB;
+    private String answerC;
+    private String answerD;
+    private String answerTrue;
+    private String imageQuestion;
+    private String userAnswer;
 
-    public CauHoi(int idCauHoi, int idLoaiCauHoi, String cauHoiText, String dapAnA, String dapAnB, String dapAnC, String dapAnD, String dapAnDung, String cauHoiHinhAnh) {
-        this.idCauHoi = idCauHoi;
-        this.idLoaiCauHoi = idLoaiCauHoi;
-        this.cauHoiText = cauHoiText;
-        this.dapAnA = dapAnA;
-        this.dapAnB = dapAnB;
-        this.dapAnC = dapAnC;
-        this.dapAnD = dapAnD;
-        this.dapAnDung = dapAnDung;
-        this.cauHoiHinhAnh = cauHoiHinhAnh;
+    public Question(int questionID, int questionTypeID, String textQuestion, String answerA, String answerB, String answerC, String answerD, String answerTrue, String imageQuestion, String userAnswer) {
+        this.questionID = questionID;
+        this.questionTypeID = questionTypeID;
+        this.textQuestion = textQuestion;
+        this.answerA = answerA;
+        this.answerB = answerB;
+        this.answerC = answerC;
+        this.answerD = answerD;
+        this.answerTrue = answerTrue;
+        this.imageQuestion = imageQuestion;
+        this.userAnswer = userAnswer;
     }
 
-    public CauHoi() {
+    public Question() {
+
     }
 
-    public int getIdCauHoi() {
-        return idCauHoi;
+    public int getQuestionID() {
+        return questionID;
     }
 
-    public void setIdCauHoi(int idCauHoi) {
-        this.idCauHoi = idCauHoi;
+    public void setQuestionID(int questionID) {
+        this.questionID = questionID;
     }
 
-    public int getIdLoaiCauHoi() {
-        return idLoaiCauHoi;
+    public int getQuestionTypeID() {
+        return questionTypeID;
     }
 
-    public void setIdLoaiCauHoi(int idLoaiCauHoi) {
-        this.idLoaiCauHoi = idLoaiCauHoi;
+    public void setQuestionTypeID(int questionTypeID) {
+        this.questionTypeID = questionTypeID;
     }
 
-    public String getCauHoiText() {
-        return cauHoiText;
+    public String getTextQuestion() {
+        return textQuestion;
     }
 
-    public void setCauHoiText(String cauHoiText) {
-        this.cauHoiText = cauHoiText;
+    public void setTextQuestion(String textQuestion) {
+        this.textQuestion = textQuestion;
     }
 
-    public String getDapAnA() {
-        return dapAnA;
+    public String getAnswerA() {
+        return answerA;
     }
 
-    public void setDapAnA(String dapAnA) {
-        this.dapAnA = dapAnA;
+    public void setAnswerA(String answerA) {
+        this.answerA = answerA;
     }
 
-    public String getDapAnB() {
-        return dapAnB;
+    public String getAnswerB() {
+        return answerB;
     }
 
-    public void setDapAnB(String dapAnB) {
-        this.dapAnB = dapAnB;
+    public void setAnswerB(String answerB) {
+        this.answerB = answerB;
     }
 
-    public String getDapAnC() {
-        return dapAnC;
+    public String getAnswerC() {
+        return answerC;
     }
 
-    public void setDapAnC(String dapAnC) {
-        this.dapAnC = dapAnC;
+    public void setAnswerC(String answerC) {
+        this.answerC = answerC;
     }
 
-    public String getDapAnD() {
-        return dapAnD;
+    public String getAnswerD() {
+        return answerD;
     }
 
-    public void setDapAnD(String dapAnD) {
-        this.dapAnD = dapAnD;
+    public void setAnswerD(String answerD) {
+        this.answerD = answerD;
     }
 
-    public String getDapAnDung() {
-        return dapAnDung;
+    public String getAnswerTrue() {
+        return answerTrue;
     }
 
-    public void setDapAnDung(String dapAnDung) {
-        this.dapAnDung = dapAnDung;
+    public void setAnswerTrue(String answerTrue) {
+        this.answerTrue = answerTrue;
     }
 
-    public String getCauHoiHinhAnh() {
-        return cauHoiHinhAnh;
+    public String getImageQuestion() {
+        return imageQuestion;
     }
 
-    public void setCauHoiHinhAnh(String cauHoiHinhAnh) {
-        this.cauHoiHinhAnh = cauHoiHinhAnh;
+    public void setImageQuestion(String imageQuestion) {
+        this.imageQuestion = imageQuestion;
+    }
+
+    public String getUserAnswer() {
+        return userAnswer;
+    }
+
+    public void setUserAnswer(String userAnswer) {
+        this.userAnswer = userAnswer;
     }
 }

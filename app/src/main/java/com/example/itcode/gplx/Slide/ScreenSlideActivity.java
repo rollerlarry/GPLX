@@ -1,6 +1,7 @@
-package com.example.roller.tracnghiem.slide;
+package com.example.itcode.gplx.Slide;
 
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -8,18 +9,21 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageView;
 
-import com.example.roller.tracnghiem.Controller.QuestionControler;
-import com.example.roller.tracnghiem.Entity.CauHoi;
-import com.example.roller.tracnghiem.R;
+import com.example.itcode.gplx.Controller.QuestionControler;
+import com.example.itcode.gplx.DTO.Question;
+import com.example.itcode.gplx.R;
 
 import java.util.ArrayList;
 
 
-public class ScreenSlideActivity extends FragmentActivity {
+public class ScreenSlideActivity extends FragmentActivity implements View.OnClickListener {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
+    private BottomSheetBehavior bottomSheetBehavior;
+    private ImageView imvBottomSheet;
     private static final int NUM_PAGES = 10;
 
     /**
@@ -34,8 +38,8 @@ public class ScreenSlideActivity extends FragmentActivity {
     private PagerAdapter mPagerAdapter;
 
     //CSDL
-    QuestionControler questionControler;
-    ArrayList<CauHoi> cauHoiArrayList;
+    private QuestionControler questionControler;
+    private ArrayList<Question> questionArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,17 @@ public class ScreenSlideActivity extends FragmentActivity {
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
         questionControler = new QuestionControler(this);
-        cauHoiArrayList = new ArrayList<>();
-        cauHoiArrayList = questionControler.getCauHoi();
+        questionArrayList = new ArrayList<>();
+        questionArrayList = questionControler.getQuestionList();
+
+        imvBottomSheet = findViewById(R.id.imvBottomSheet);
+        imvBottomSheet.setOnClickListener(this);
+        View bottomSheet = findViewById(R.id.bottom_sheet);
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
     }
 
-    public ArrayList<CauHoi> getData(){
-        return cauHoiArrayList;
+    public ArrayList<Question> getData(){
+        return questionArrayList;
     }
 
     @Override
@@ -66,6 +75,17 @@ public class ScreenSlideActivity extends FragmentActivity {
         } else {
             // Otherwise, select the previous step.
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.imvBottomSheet:
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                break;
+            default:
+                break;
         }
     }
 

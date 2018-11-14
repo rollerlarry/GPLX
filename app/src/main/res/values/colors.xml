@@ -15,9 +15,13 @@
     <color name="colorViewLine">#EDEDED</color>
     <color name="colorDark">#BDBDBD</color>
 
+    <color name="backgroundTitle">#3F42DF</color>
+
+
     <!--Color List Basic-->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="backgroundTitle">#3F42DF</color>
+    <color name="green">#3BAC1F</color>
+    <color name="blue">#699AEE</color>
 
 </resources>

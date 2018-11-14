@@ -9,7 +9,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.itcode.gplx.Helper.DatabaseHelper;
 import com.example.itcode.gplx.R;
 
 public class FlashActivity extends AppCompatActivity {
@@ -29,10 +28,6 @@ public class FlashActivity extends AppCompatActivity {
         tvTitle.startAnimation(animation);
         Intent intentMain = new Intent(this,HomeActivity.class);
         Timer(intentMain);
-
-
-        createDatabase();
-
     }
 
     public void Timer(final Intent intent){
@@ -51,10 +46,5 @@ public class FlashActivity extends AppCompatActivity {
             }
         };
         thread.start();
-    }
-
-    public void createDatabase(){
-        DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        sqLiteDatabase = databaseHelper.getWritableDatabase();
     }
 }

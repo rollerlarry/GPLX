@@ -1,4 +1,4 @@
-package com.example.roller.tracnghiem.slide;
+package com.example.itcode.gplx.Slide;
 
 
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.roller.tracnghiem.Entity.CauHoi;
-import com.example.roller.tracnghiem.R;
+import com.example.itcode.gplx.DTO.Question;
+import com.example.itcode.gplx.R;
 
 import java.util.ArrayList;
 
@@ -21,19 +21,17 @@ import java.util.ArrayList;
  */
 public class ScreenSilePageFragment extends Fragment {
 
-    private ArrayList<CauHoi> cauHoiArrayList;
+    private ArrayList<Question> questionArrayList;
     public static final String ARG_PAGE = "page";
-    private int numberPageCurrent;
-
-    TextView tvQuestion;
-    RadioGroup radioGroup;
-    RadioButton radA, radB, radC, radD;
+    private int pageNumberCurrent;
+    private TextView tvQuestion, tvNumPrev, tvNumCurrent, tvNumNext;
+    private RadioGroup radioGroup;
+    private RadioButton radA, radB, radC, radD;
 
 
     public ScreenSilePageFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +45,9 @@ public class ScreenSilePageFragment extends Fragment {
         radB = rootView.findViewById(R.id.radB);
         radC = rootView.findViewById(R.id.radC);
         radD = rootView.findViewById(R.id.radD);
+        tvNumPrev = rootView.findViewById(R.id.tvNumPrev);
+        tvNumCurrent = rootView.findViewById(R.id.tvNumCurrent);
+        tvNumNext = rootView.findViewById(R.id.tvNumNext);
 
         return rootView;
     }
@@ -55,27 +56,29 @@ public class ScreenSilePageFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        cauHoiArrayList = new ArrayList<>();
+        questionArrayList = new ArrayList<>();
         ScreenSlideActivity screenSlideActivity = (ScreenSlideActivity) getActivity();
-        cauHoiArrayList = screenSlideActivity.getData();
+        questionArrayList = screenSlideActivity.getData();
 
-        numberPageCurrent = getArguments().getInt(ARG_PAGE);
+        pageNumberCurrent = getArguments().getInt(ARG_PAGE);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //tvQuestion.setText(cauHoiArrayList.get(numberPageCurrent).getCauHoiText()+"");
-//        radA.setText(cauHoiArrayList.get(numberPageCurrent).getDapAnA());
-//        radB.setText(cauHoiArrayList.get(numberPageCurrent).getDapAnB());
-//        radC.setText(cauHoiArrayList.get(numberPageCurrent).getDapAnC());
-//        radD.setText(cauHoiArrayList.get(numberPageCurrent).getDapAnD());
-//        for (CauHoi cauHoi : cauHoiArrayList){
-//            System.out.println(cauHoi.getCauHoiText());
-//        }
-//
-//        System.out.println(numberPageCurrent);
-//        System.out.println(cauHoiArrayList.size());
+        tvQuestion.setText(questionArrayList.get(pageNumberCurrent).getTextQuestion()+"");
+        radA.setText(questionArrayList.get(pageNumberCurrent).getAnswerA());
+        radB.setText(questionArrayList.get(pageNumberCurrent).getAnswerB());
+        radC.setText(questionArrayList.get(pageNumberCurrent).getAnswerC());
+        radD.setText(questionArrayList.get(pageNumberCurrent).getAnswerD());
+        if (pageNumberCurrent == 0){
+            tvNumPrev.setText("");
+        }else{
+            tvNumPrev.setText("Câu : " + (pageNumberCurrent));
+        }
+        tvNumCurrent.setText("Câu : " + (pageNumberCurrent +1));
+        tvNumNext.setText("Câu : " + (pageNumberCurrent + 2));
+
     }
 
     public static ScreenSilePageFragment screenSilePageFragment(int pageNumber){

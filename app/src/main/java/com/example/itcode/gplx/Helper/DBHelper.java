@@ -1,4 +1,4 @@
-package com.example.roller.tracnghiem;
+package com.example.itcode.gplx.Helper;
 
 /**
  * Created by NguyenTuan on 11/10/2016.
@@ -20,7 +20,7 @@ import java.sql.SQLException;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static String DB_PATH = "/data/data/com.example.roller.tracnghiem/databases/";
+    private static String DB_PATH = "/data/data/com.example.itcode.gplx/databases/";
     private static String DB_NAME = "DB_CNTT";
     private static final int DATABASE_VERSION = 1;
 

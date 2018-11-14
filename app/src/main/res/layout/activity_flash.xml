@@ -12,7 +12,7 @@
         android:layout_width="@dimen/widthLogo"
         android:layout_height="@dimen/widthLogo"
         android:layout_gravity="center"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logoplus" />
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"

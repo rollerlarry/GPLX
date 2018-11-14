@@ -22,7 +22,9 @@
         <activity android:name=".Activity.LearnTheoryActivity" />
         <activity android:name=".Activity.LearnPracticeActivity" />
         <activity android:name=".Activity.ExamTipsActivity" />
-        <activity android:name=".Activity.SaveQuestionActivity"></activity>
+        <activity android:name=".Activity.SaveQuestionActivity" />
+        <activity android:name=".Activity.ExamResultActivity" />
+        <activity android:name=".Slide.ScreenSlideActivity"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ExamTipsActivity">
+    tools:context=".Activity.ExamTipsActivity"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/tips_bg"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="370dp">
 
-</android.support.constraint.ConstraintLayout>
+            <FrameLayout
+                android:id="@+id/frameContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/btnTheoryTips"
+                    android:layout_width="191dp"
+                    android:layout_height="@dimen/layoutHightButtonHome"
+                    android:text="Mẹo Lý Thuyết"
+                    android:background="@drawable/round_button_custom_selected"
+                    />
+                <Button
+                    android:id="@+id/btnPracticeTips"
+                    android:layout_width="191dp"
+                    android:layout_height="@dimen/layoutHightButtonInfo"
+                    android:text="Mẹo Thực Hành"
+                    android:background="@drawable/round_button_custom_nonselected"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
