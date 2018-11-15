@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -45,30 +46,43 @@
         android:gravity="center"
         android:background="@drawable/background_custom"
         >
-        <Button
-            android:id="@+id/btnHome"
-            android:layout_width="256px"
-            android:layout_height="@dimen/layoutHightButtonHome"
-            android:text="@string/textButtonHome"
-            android:background="@drawable/round_button_custom_selected"
-            />
-        <Button
-            android:id="@+id/btnInfo"
-            android:layout_width="256px"
-            android:layout_height="@dimen/layoutHightButtonInfo"
-            android:text="@string/textButtonInfo"
-            android:background="@drawable/round_button_custom_nonselected"
-            android:textColor="@color/white"
-            />
-        <Button
-            android:id="@+id/btnContact"
-            android:layout_width="256px"
-            android:layout_height="@dimen/layoutHightButtonContact"
-            android:text="@string/textButtonContact"
-            android:background="@drawable/round_button_custom_nonselected"
-            android:textColor="@color/white"
 
-            />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnHome"
+                android:layout_width="256px"
+                android:layout_height="@dimen/layoutHightButtonHome"
+                android:background="@drawable/round_button_custom_selected"
+                android:text="@string/textButtonHome"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btnInfo"
+                android:layout_width="256px"
+                android:layout_height="@dimen/layoutHightButtonInfo"
+                android:background="@drawable/round_button_custom_nonselected"
+                android:text="@string/textButtonInfo"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/btnHome" />
+
+            <Button
+                android:id="@+id/btnContact"
+                android:layout_width="256px"
+                android:layout_height="@dimen/layoutHightButtonContact"
+                android:background="@drawable/round_button_custom_nonselected"
+
+                android:text="@string/textButtonContact"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnInfo" />
+        </android.support.constraint.ConstraintLayout>
+
+
+
+
     </LinearLayout>
     <FrameLayout
         android:id="@+id/frameContent"

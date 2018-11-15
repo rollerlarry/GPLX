@@ -12,8 +12,8 @@ public class QuestionControler {
     public QuestionControler(Context context){
         this.context = context;
     }
-    public ArrayList<Question> getQuestionList(){
+    public ArrayList<Question> getQuestionList(int typeExam){
         QuestionDAO questionDAO = new QuestionDAO(context);
-        return questionDAO.getQuestionList();
+        return questionDAO.getQuestionList(typeExam);
     }
 }

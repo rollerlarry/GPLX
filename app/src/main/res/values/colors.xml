@@ -23,5 +23,6 @@
     <color name="black">#000000</color>
     <color name="green">#3BAC1F</color>
     <color name="blue">#699AEE</color>
+    <color name="red">#F44336</color>
 
 </resources>

@@ -17,10 +17,10 @@ public class QuestionDAO {
         dbHelper = new DBHelper(context);
     }
 
-    public ArrayList<Question> getQuestionList(){
+    public ArrayList<Question> getQuestionList(int typeExam){
         ArrayList<Question> questionArrayList = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        String sqlSelect = "SELECT * FROM "+TB_TABLE;
+        String sqlSelect = "SELECT * FROM '"+TB_TABLE + "'WHERE ID_LoaiCauHoi = '" +typeExam + "'LIMIT 5";
         Cursor cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
         if (cursor.moveToFirst()){
             do {

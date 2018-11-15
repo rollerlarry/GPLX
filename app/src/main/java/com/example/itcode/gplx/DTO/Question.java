@@ -1,6 +1,8 @@
 package com.example.itcode.gplx.DTO;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable{
     private int questionID;
     private int questionTypeID;
     private String textQuestion;
@@ -11,6 +13,7 @@ public class Question {
     private String answerTrue;
     private String imageQuestion;
     private String userAnswer;
+    public int choiceID = -1;
 
     public Question(int questionID, int questionTypeID, String textQuestion, String answerA, String answerB, String answerC, String answerD, String answerTrue, String imageQuestion, String userAnswer) {
         this.questionID = questionID;
