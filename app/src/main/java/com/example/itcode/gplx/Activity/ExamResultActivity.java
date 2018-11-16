@@ -31,35 +31,14 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_exam_result);
         questionArrayList = new ArrayList<>();
 
+        //Get question list from screen slide
         Intent intent = getIntent();
         questionArrayList = (ArrayList<Question>) intent.getExtras().getSerializable(ScreenSlideActivity.QUESTION_ARRAY_LIST);
 
         findView();
+        setEvent();
         checkResult();
-
-        tbtnTrueAnswer.setText(numTrueAnswer+"");
-        tbtnFalseAnswer.setText(numFalseAnswer+"");
-        tbtnNoAnswer.setText(numNoAnswer+"");
-
-        tvTrueAnswer.setText(numTrueAnswer+"");
-        tvTotalAnswer.setText(questionArrayList.size()+"");
-        if (numTrueAnswer >= (questionArrayList.size()/2)){
-            tvResult.setText("ĐẠT");
-        }else {
-            tvResult.setText("KHÔNG ĐẠT");
-            bgResult.setBackground(getResources().getDrawable(R.drawable.circle_bg_custom_false));
-
-
-        }
-
-        btnBack.setOnClickListener(this);
-        btnDoAgain.setOnClickListener(this);
-        btnBackTopic.setOnClickListener(this);
-
-        tbtnNoAnswer.setOnClickListener(this);
-        tbtnFalseAnswer.setOnClickListener(this);
-        tbtnTrueAnswer.setOnClickListener(this);
-
+        resultInfo();
     }
 
     public void findView(){
@@ -77,6 +56,16 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
         btnBackTopic = findViewById(R.id.btnBackTopic);
     }
 
+    public void setEvent(){
+        btnBack.setOnClickListener(this);
+        btnDoAgain.setOnClickListener(this);
+        btnBackTopic.setOnClickListener(this);
+
+        tbtnNoAnswer.setOnClickListener(this);
+        tbtnFalseAnswer.setOnClickListener(this);
+        tbtnTrueAnswer.setOnClickListener(this);
+    }
+
     //Check result
     public void checkResult(){
         for (int i = 0; i < questionArrayList.size(); i++) {
@@ -90,21 +79,46 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+    public void resultInfo(){
+        tbtnTrueAnswer.setText(numTrueAnswer+"");
+        tbtnFalseAnswer.setText(numFalseAnswer+"");
+        tbtnNoAnswer.setText(numNoAnswer+"");
+
+        tvTrueAnswer.setText(numTrueAnswer+"");
+        tvTotalAnswer.setText(questionArrayList.size()+"");
+        if (numTrueAnswer >= (questionArrayList.size()/2)){
+            tvResult.setText("ĐẠT");
+        }else {
+            tvResult.setText("KHÔNG ĐẠT");
+            bgResult.setBackground(getResources().getDrawable(R.drawable.circle_bg_custom_false));
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnBack:
+                //Fix error of slide can not change status when finish
+                for (int i = 0; i < 4; i++) {
+                    ScreenSlideActivity.mPager.setCurrentItem(i);
+                }
+                ScreenSlideActivity.mPager.setCurrentItem(0);
+
+                //Call finish to back history exam
                 finish();
                 break;
             case R.id.btnDoAgain:
                 resetQuestionArrayList();
                 Intent intent1 = new Intent(this, ScreenSlideActivity.class);
-                intent1.putExtra("questionArrayListOld", questionArrayList);
+                ScreenSlideActivity.questionArrayListOld.clear();
+                ScreenSlideActivity.questionArrayListOld.addAll(questionArrayList);
+                ScreenSlideActivity.checkDoAgain = 1;
                 startActivity(intent1);
                 break;
             case R.id.btnBackTopic:
                 Intent intent2 = new Intent(this, ExamForGroupActivity.class);
                 startActivity(intent2);
+                ScreenSlideActivity.checkDoAgain = 0;
                 break;
             case R.id.tbtnFalseAnswer:
                 Toast.makeText(this, "Câu trả lời sai", Toast.LENGTH_SHORT).show();

@@ -77,7 +77,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1sp"
+                        android:layout_height="2sp"
                         android:background="@color/colorDark"
                         app:layout_constraintBottom_toBottomOf="@+id/tvNumCurrent">
 

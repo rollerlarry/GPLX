@@ -20,7 +20,7 @@ import com.example.itcode.gplx.R;
 
 import java.util.ArrayList;
 
-public class ScreenSilePageFragment extends Fragment {
+public class ScreenSilePageFragment extends Fragment implements View.OnClickListener{
 
     public static final String ARG_PAGE = "page";
     public static final String ARG_CHECK_FINISH = "check_finish";
@@ -44,6 +44,9 @@ public class ScreenSilePageFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_screen_sile_page, container, false);
         findView(rootView);
+
+        tvNumNext.setOnClickListener(this);
+        tvNumPrev.setOnClickListener(this);
         return rootView;
     }
 
@@ -100,7 +103,7 @@ public class ScreenSilePageFragment extends Fragment {
             radC.setClickable(false);
             radD.setClickable(false);
 
-            getCheckAnswer(getItem(pageNumberCurrent).getAnswerTrue().toString());
+            getCheckAnswer(getItem(pageNumberCurrent).getAnswerTrue().toString(), questionArrayList.get(pageNumberCurrent).getUserAnswer());
         }
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -108,36 +111,15 @@ public class ScreenSilePageFragment extends Fragment {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedID) {
                 questionArrayList.get(pageNumberCurrent).choiceID = checkedID;
                 questionArrayList.get(pageNumberCurrent).setUserAnswer(getChoiceFromRadioButton(checkedID));
-                //Toast.makeText(getActivity(), "" + checkedID, Toast.LENGTH_SHORT).show();
-//                if (ScreenSlideActivity.mPager.getCurrentItem() == 4){
-//
-//                }else{
-                    //ScreenSlideActivity.mPager.setCurrentItem(ScreenSlideActivity.mPager.getCurrentItem() + 1);
-//                }
-                //System.out.println(ScreenSlideActivity.mPager);
+                //ScreenSlideActivity.mPager.setCurrentItem(pageNumberCurrent + 1);
             }
         });
-
-
-
     }
 
     public void pagerNumberDisplay(){
-        if (pageNumberCurrent == 0){
-            tvNumPrev.setText("");
-        }else{
-            tvNumPrev.setText("Câu : " + (pageNumberCurrent));
-        }
+        if (pageNumberCurrent == 0){ tvNumPrev.setText(""); }else{ tvNumPrev.setText("Câu : " + (pageNumberCurrent)); }
         tvNumCurrent.setText("Câu : " + (pageNumberCurrent +1));
-
-
-        if (pageNumberCurrent == 4){
-            tvNumNext.setText("");
-        }else{
-            tvNumNext.setText("Câu : " + (pageNumberCurrent + 2));
-        }
-
-        System.out.println(pageNumberCurrent);
+        if (pageNumberCurrent == 4){ tvNumNext.setText(""); }else{ tvNumNext.setText("Câu : " + (pageNumberCurrent + 2)); }
     }
 
     public static ScreenSilePageFragment screenSilePageFragment(int pageNumber, int checkFinish){
@@ -165,15 +147,43 @@ public class ScreenSilePageFragment extends Fragment {
     }
 
     //Check answer true
-    private void getCheckAnswer(String answer){
-        if (answer.equals("A")){
-            radA.setBackgroundColor(Color.RED);
-        } else if (answer.equals("B")){
-            radB.setBackgroundColor(Color.RED);
-        } else if (answer.equals("C")){
-            radC.setBackgroundColor(Color.RED);
-        } else if (answer.equals("D")){
-            radD.setBackgroundColor(Color.RED);
+    private void getCheckAnswer(String trueAnswer, String userAnswer){
+        if (trueAnswer.equals("A")){
+            if (userAnswer != null && userAnswer.equals("A")){
+                radA.setBackgroundColor(Color.GREEN);
+            }else{
+                radA.setBackgroundColor(Color.RED);
+            }
+        } else if (trueAnswer.equals("B")){
+            if (userAnswer != null &&  userAnswer.equals("B")){
+                radB.setBackgroundColor(Color.GREEN);
+            }else{
+                radB.setBackgroundColor(Color.RED);
+            }
+        } else if (trueAnswer.equals("C")){
+            if (userAnswer != null && userAnswer.equals("C")){
+                radC.setBackgroundColor(Color.GREEN);
+            }else{
+                radC.setBackgroundColor(Color.RED);
+            }
+        } else if (trueAnswer.equals("D")){
+            if (userAnswer != null && userAnswer.equals("D")){
+                radD.setBackgroundColor(Color.GREEN);
+            }else{
+                radD.setBackgroundColor(Color.RED);
+            }
         }else ;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tvNumNext:
+                ScreenSlideActivity.mPager.setCurrentItem(pageNumberCurrent + 1);
+                break;
+            case R.id.tvNumPrev:
+                ScreenSlideActivity.mPager.setCurrentItem(pageNumberCurrent - 1);
+                break;
+        }
     }
 }

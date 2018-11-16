@@ -44,6 +44,7 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
 
     private int typeExam;
     private int checkFinish = 0;
+    public static int checkDoAgain = 0;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -58,12 +59,15 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
 
     //CSDL
     private QuestionControler questionControler;
-    private ArrayList<Question> questionArrayList;
+    private  ArrayList<Question> questionArrayList;
+    public static ArrayList<Question> questionArrayListOld = new ArrayList<>();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
+
+        questionArrayList = new ArrayList<>();
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = findViewById(R.id.pager);
@@ -75,21 +79,20 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
         Intent intent = getIntent();
         typeExam = intent.getIntExtra("typeExam", 1);
 
+        //Start counter
         counterClassTimer = new CounterClass(60*1000, 1000);
         counterClassTimer.start();
-        questionControler = new QuestionControler(this);
-        questionArrayList = new ArrayList<>();
+
+
 
         //Get questionList
-//        ArrayList<Question> questionArrayListOld = new ArrayList<>();
-//        questionArrayListOld = (ArrayList<Question>) getIntent().getSerializableExtra("questionArrayListOld");
-//        if (questionArrayListOld.size() > 0){
-//            questionArrayList = questionArrayListOld;
-//        }else{
-//            questionArrayList = questionControler.getQuestionList(typeExam);
-//        }
-
-        questionArrayList = questionControler.getQuestionList(typeExam);
+        if (checkDoAgain == 0){
+            questionArrayList.clear();
+            questionControler = new QuestionControler(this);
+            questionArrayList = questionControler.getQuestionList(typeExam);
+        }else {
+            questionArrayList.addAll(questionArrayListOld);
+        }
 
         //Call find view and event
         findView();
@@ -141,7 +144,6 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
 
             }
         });
-
         builder.show();
     }
 
@@ -156,7 +158,6 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
             case R.id.imvBottomSheet:
                 View view = getLayoutInflater().inflate(R.layout.fragment_bottom_sheet_dialog, null);
                 final BottomSheetDialog dialog = new BottomSheetDialog(this);
-
 //                CheckAnswerAdapter checkAnswerAdapter = new CheckAnswerAdapter(questionArrayList, this);
 //                GridView gridView = dialog.findViewById(R.id.gvQuestionList);
 //                gridView.setAdapter(checkAnswerAdapter);
@@ -214,10 +215,7 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
         Intent intent = new Intent(this, ExamResultActivity.class);
         intent.putExtra(QUESTION_ARRAY_LIST, questionArrayList);
         startActivity(intent);
-        if (mPager.getCurrentItem() >= 4) mPager.setCurrentItem(mPager.getCurrentItem() - 4);
-        else if (mPager.getCurrentItem() <= 4) mPager.setCurrentItem(mPager.getCurrentItem() + 4);
     }
-
 
     /**
      * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
