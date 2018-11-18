@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
@@ -98,18 +98,10 @@
             <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
-                android:layout_height="490dp"
-                android:background="#FFF" />
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimaryDark"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/imvBottomSheet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/arrowup"/>
-            </LinearLayout>
+                android:background="#FFF" />
         </LinearLayout>
-</LinearLayout>
+
+    <include
+        layout="@layout/fragment_bottom_sheet"></include>
+</android.support.design.widget.CoordinatorLayout>

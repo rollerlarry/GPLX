@@ -1,11 +1,11 @@
-package com.example.itcode.gplx.Test;
+package com.example.itcode.gplx.DTO;
 
-public class TitleChild {
+public class TitleTipChild {
 
     public String option1;
     public String option2;
 
-    public TitleChild(String option1, String option2) {
+    public TitleTipChild(String option1, String option2) {
         this.option1 = option1;
         this.option2 = option2;
     }

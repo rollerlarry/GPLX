@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.example.itcode.gplx.R;
-import com.example.itcode.gplx.Test.TitleChild;
-import com.example.itcode.gplx.Test.TitleParent;
+import com.example.itcode.gplx.DTO.TitleTipChild;
+import com.example.itcode.gplx.DTO.TitleTipParent;
 import com.example.itcode.gplx.ViewHolder.TitleParentViewHolder;
 import com.example.itcode.gplx.ViewHolder.TitleViewChildHolder;
 
@@ -37,14 +37,14 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder, 
 
     @Override
     public void onBindParentViewHolder(TitleParentViewHolder titleParentViewHolder, int i, Object o) {
-        TitleParent titleParent = (TitleParent) o;
-        titleParentViewHolder.textView.setText(titleParent.getTitle());
+        TitleTipParent titleTipParent = (TitleTipParent) o;
+        titleParentViewHolder.textView.setText(titleTipParent.getTitle());
     }
 
     @Override
     public void onBindChildViewHolder(TitleViewChildHolder titleViewChildHolder, int i, Object o) {
-        TitleChild titleChild = (TitleChild) o;
-        titleViewChildHolder.option1.setText(titleChild.getOption1());
-        titleViewChildHolder.option2.setText(titleChild.getOption2());
+        TitleTipChild titleTipChild = (TitleTipChild) o;
+        titleViewChildHolder.option1.setText(titleTipChild.getOption1());
+        titleViewChildHolder.option2.setText(titleTipChild.getOption2());
     }
 }

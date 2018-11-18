@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.itcode.gplx.Activity.ExamForGroupActivity;
@@ -38,13 +39,14 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
     private static final int NUM_PAGES = 5;
     public static final String QUESTION_ARRAY_LIST = "questionArrayList";
 
-    private ImageView imvBottomSheet;
     private TextView tvTimer, tvFinish, tvExit;
     private CounterClass counterClassTimer;
 
     private int typeExam;
     private int checkFinish = 0;
     public static int checkDoAgain = 0;
+    private LinearLayout bottomSheetLayout;
+    private BottomSheetBehavior bottomSheetBehavior;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -83,6 +85,12 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
         counterClassTimer = new CounterClass(60*1000, 1000);
         counterClassTimer.start();
 
+        //Bottom sheet
+        bottomSheetLayout = findViewById(R.id.bottomSheet);
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
+        //hidden bottom sheet
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
 
 
         //Get questionList
@@ -98,17 +106,29 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
         findView();
         setEvent();
 
+        //Show check answer
+        CheckAnswerAdapter checkAnswerAdapter = new CheckAnswerAdapter(questionArrayList, this);
+        GridView gridView = findViewById(R.id.grvQuestion);
+        gridView.setAdapter(checkAnswerAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                mPager.setCurrentItem(position);
+            }
+        });
+
+
     }
 
     public void findView(){
-        imvBottomSheet = findViewById(R.id.imvBottomSheet);
         tvTimer = findViewById(R.id.tvTimer);
         tvFinish = findViewById(R.id.tvFinish);
         tvExit = findViewById(R.id.tvExit);
     }
 
     public void setEvent(){
-        imvBottomSheet.setOnClickListener(this);
         tvFinish.setOnClickListener(this);
         tvExit.setOnClickListener(this);
     }
@@ -155,21 +175,21 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.imvBottomSheet:
-                View view = getLayoutInflater().inflate(R.layout.fragment_bottom_sheet_dialog, null);
-                final BottomSheetDialog dialog = new BottomSheetDialog(this);
-//                CheckAnswerAdapter checkAnswerAdapter = new CheckAnswerAdapter(questionArrayList, this);
-//                GridView gridView = dialog.findViewById(R.id.gvQuestionList);
-//                gridView.setAdapter(checkAnswerAdapter);
-//                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        dialog.dismiss();
-//                    }
-//                });
-                dialog.setContentView(view);
-                dialog.show();
-                break;
+//            case R.id.imvBottomSheet:
+//                View view = getLayoutInflater().inflate(R.layout.fragment_bottom_sheet, null);
+//                final BottomSheetDialog dialog = new BottomSheetDialog(this);
+////                CheckAnswerAdapter checkAnswerAdapter = new CheckAnswerAdapter(questionArrayList, this);
+////                GridView gridView = dialog.findViewById(R.id.gvQuestionList);
+////                gridView.setAdapter(checkAnswerAdapter);
+////                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+////                    @Override
+////                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+////                        dialog.dismiss();
+////                    }
+////                });
+//                dialog.setContentView(view);
+//                dialog.show();
+//                break;
             case R.id.tvFinish:
                 finishExam();
                 break;

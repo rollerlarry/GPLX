@@ -1,17 +1,17 @@
-package com.example.itcode.gplx.Test;
+package com.example.itcode.gplx.DTO;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 
 import java.util.List;
 import java.util.UUID;
 
-public class TitleParent implements ParentObject{
+public class TitleTipParent implements ParentObject{
 
     private List<Object> mChildrenList;
     private UUID _id;
     private String title;
 
-    public TitleParent(String title) {
+    public TitleTipParent(String title) {
         this.title = title;
         _id = UUID.randomUUID();
     }

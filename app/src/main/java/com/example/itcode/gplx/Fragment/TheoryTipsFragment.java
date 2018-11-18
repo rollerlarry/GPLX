@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.example.itcode.gplx.Adapter.MyAdapter;
 import com.example.itcode.gplx.R;
-import com.example.itcode.gplx.Test.TitleChild;
-import com.example.itcode.gplx.Test.TitleCreator;
-import com.example.itcode.gplx.Test.TitleParent;
+import com.example.itcode.gplx.DTO.TitleTipChild;
+import com.example.itcode.gplx.DTO.TitleTipCreator;
+import com.example.itcode.gplx.DTO.TitleTipParent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,14 +48,14 @@ public class TheoryTipsFragment extends Fragment {
     }
 
     private List<ParentObject> initData() {
-        TitleCreator titleCreator = TitleCreator.get(getActivity());
-        List<TitleParent> titleCreators = titleCreator.getAll();
+        TitleTipCreator titleTipCreator = TitleTipCreator.get(getActivity());
+        List<TitleTipParent> titleCreators = titleTipCreator.getAll();
         List<ParentObject> parentObjects = new ArrayList<>();
-        for (TitleParent titleParent : titleCreators){
+        for (TitleTipParent titleTipParent : titleCreators){
             List<Object> childList = new ArrayList<>();
-            childList.add(new TitleChild("", "Anyone who reads Old and Middle English literary texts will be familiar with the mid-brown volumes of the EETS, with the symbol of Alfred's jewel embossed on the front cover. Most of the works attributed to King Alfred or to Aelfric, along with some of those by bishop Wulfstan and much anonymous prose and verse from the pre-Conquest period"));
-            titleParent.setChildObjectList(childList);
-            parentObjects.add(titleParent);
+            childList.add(new TitleTipChild("", "Anyone who reads Old and Middle English literary texts will be familiar with the mid-brown volumes of the EETS, with the symbol of Alfred's jewel embossed on the front cover. Most of the works attributed to King Alfred or to Aelfric, along with some of those by bishop Wulfstan and much anonymous prose and verse from the pre-Conquest period"));
+            titleTipParent.setChildObjectList(childList);
+            parentObjects.add(titleTipParent);
         }
         return parentObjects;
     }

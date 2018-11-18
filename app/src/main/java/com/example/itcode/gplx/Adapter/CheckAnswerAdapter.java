@@ -13,7 +13,7 @@ import com.example.itcode.gplx.R;
 import java.util.ArrayList;
 
 public class CheckAnswerAdapter extends BaseAdapter{
-    ArrayList lsData;
+    ArrayList<Question> lsData;
     LayoutInflater layoutInflater;
 
     public CheckAnswerAdapter(ArrayList lsData, Context context) {
@@ -50,7 +50,7 @@ public class CheckAnswerAdapter extends BaseAdapter{
         }
 
         int i = position + 1;
-        viewHolder.tvNumberQuestion.setText(i);
+        viewHolder.tvNumberQuestion.setText(i+"");
         return convertView;
     }
 
