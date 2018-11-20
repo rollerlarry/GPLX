@@ -20,7 +20,22 @@ public class QuestionDAO {
     public ArrayList<Question> getQuestionList(int typeExam){
         ArrayList<Question> questionArrayList = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        String sqlSelect = "SELECT * FROM '"+TB_TABLE + "'WHERE ID_LoaiCauHoi = '" +typeExam + "'LIMIT 5";
+        String sqlSelect ="";
+        if(typeExam==3)
+        {
+            int type[] =new int[3];
+            type[0]=0;
+            type[1]=1;
+            type[2]=2;
+            sqlSelect ="SELECT * FROM '"+TB_TABLE +"'" +
+                    "WHERE ID_LoaiCauHoi= '" +type[0] +"' OR ID_LoaiCauHoi= '" +type[1] +"' OR ID_LoaiCauHoi= '" +type[2]+"'"+
+                    "ORDER BY RANDOM() LIMIT 5";
+        }
+        else
+        {
+            sqlSelect = "SELECT * FROM '"+TB_TABLE + "'WHERE ID_LoaiCauHoi = '" +typeExam + "'LIMIT 5";
+
+        }
         Cursor cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
         if (cursor.moveToFirst()){
             do {

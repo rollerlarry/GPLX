@@ -1,5 +1,7 @@
 package com.example.itcode.gplx.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,14 +18,14 @@ import com.example.itcode.gplx.Activity.ExamForGroupActivity;
 import com.example.itcode.gplx.Activity.ExamTipsActivity;
 import com.example.itcode.gplx.Activity.LearnPracticeActivity;
 import com.example.itcode.gplx.Activity.LearnTheoryActivity;
-import com.example.itcode.gplx.Activity.RandomExamActivity;
 import com.example.itcode.gplx.Activity.SaveQuestionActivity;
 import com.example.itcode.gplx.R;
+import com.example.itcode.gplx.Slide.ScreenSlideActivity;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     private CardView cvRandomExam, cvExamForGroup, cvLearnTheory, cvLearnPractice, cvExamTips, cvSaveQuestion;
     private Animation animationCardViewRight, animationCardViewLeft;
-
+    private Intent intent;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -68,12 +70,28 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Intent intent;
 
         switch (v.getId()){
-            case R.id.cvRandomExam: intent = new Intent(getActivity(), RandomExamActivity.class);startActivity(intent);break;
-            case R.id.cvExamForGroup: intent = new Intent(getActivity(),ExamForGroupActivity.class);startActivity(intent); break;
-            case R.id.cvLearnTheory: intent = new Intent(getActivity(),LearnTheoryActivity.class);startActivity(intent); break;
-            case R.id.cvLearnPractice: intent = new Intent(getActivity(),LearnPracticeActivity.class);startActivity(intent); break;
-            case R.id.cvExamTips: intent = new Intent(getActivity(),ExamTipsActivity.class);startActivity(intent); break;
-            case R.id.cvSaveQuestion: intent = new Intent(getActivity(),SaveQuestionActivity.class);startActivity(intent); break;
+            case R.id.cvRandomExam:
+                notiExam("Bạn đã sẵn sàng để thi ngẫu nhiên chưa ?", 3);
+                break;
+            case R.id.cvExamForGroup:
+                intent = new Intent(getActivity(),ExamForGroupActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.cvLearnTheory:
+                intent = new Intent(getActivity(),LearnTheoryActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.cvLearnPractice:
+                intent = new Intent(getActivity(),LearnPracticeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.cvExamTips:
+                intent = new Intent(getActivity(),ExamTipsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.cvSaveQuestion:
+                intent = new Intent(getActivity(),SaveQuestionActivity.class);
+                startActivity(intent); break;
         }
     }
 
@@ -93,10 +111,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         cvLearnTheory.setAnimation(animationCardViewLeft);
         cvExamTips.setAnimation(animationCardViewLeft);
     }
+    public void notiExam(String mes, final int typeExam){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setIcon(R.drawable.bell);
+        builder.setTitle("Thông báo");
+        builder.setMessage(mes);
+        intent = new Intent(getActivity(), ScreenSlideActivity.class);
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                intent.putExtra("typeExam", typeExam);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-
-
-
-
-
+            }
+        });
+        builder.show();
+    }
 }
