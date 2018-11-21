@@ -1,95 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activity.HomeActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/layoutHightTitle"
-            android:layout_gravity="bottom"
-            android:background="@color/backgroundTitle"
-            android:orientation="vertical"
-            android:gravity="center"
-            >
-            <TextView
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/title"
-                android:textColor="@color/white"
+                android:layout_height="@dimen/layoutHightTitle"
+                android:layout_gravity="bottom"
+                android:background="@color/backgroundTitle"
                 android:gravity="center"
-                android:textSize="@dimen/textSizeTitle"
-                android:textStyle="bold"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/subTitle"
-                android:textColor="@color/white"
-                android:gravity="center"
-                />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/title"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSizeTitle"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/subTitle"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layoutHightButtonHome"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="@drawable/background_custom"
-        >
-
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="50dp"
+            android:background="@drawable/background_custom"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
             <Button
                 android:id="@+id/btnHome"
-                android:layout_width="256px"
-                android:layout_height="@dimen/layoutHightButtonHome"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
                 android:background="@drawable/round_button_custom_selected"
-                android:text="@string/textButtonHome"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:text="@string/textButtonHome" />
 
             <Button
                 android:id="@+id/btnInfo"
-                android:layout_width="256px"
-                android:layout_height="@dimen/layoutHightButtonInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
                 android:background="@drawable/round_button_custom_nonselected"
                 android:text="@string/textButtonInfo"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toEndOf="@+id/btnHome" />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/btnContact"
-                android:layout_width="256px"
-                android:layout_height="@dimen/layoutHightButtonContact"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
                 android:background="@drawable/round_button_custom_nonselected"
-
                 android:text="@string/textButtonContact"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnInfo" />
-        </android.support.constraint.ConstraintLayout>
-
-
-
-
+                android:textColor="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:id="@+id/frameContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
+        </LinearLayout>
     </LinearLayout>
-    <FrameLayout
-        android:id="@+id/frameContent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
-
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

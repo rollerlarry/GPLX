@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     android:gravity="center">
 
     <ImageView
@@ -12,16 +12,5 @@
         android:layout_width="@dimen/widthLogo"
         android:layout_height="@dimen/widthLogo"
         android:layout_gravity="center"
-        android:src="@drawable/logoplus" />
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/titleMarginTop"
-        android:text="@string/textTitle"
-        android:textStyle="bold"
-        android:textColor="@color/colorTitleFlashScreen"
-        android:textSize="@dimen/titleTextSize"
-        />
-
+        android:src="@drawable/logo3" />
 </LinearLayout>

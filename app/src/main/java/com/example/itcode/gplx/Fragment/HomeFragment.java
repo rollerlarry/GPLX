@@ -15,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.example.itcode.gplx.Activity.ExamForGroupActivity;
+import com.example.itcode.gplx.Activity.ExamResultActivity;
 import com.example.itcode.gplx.Activity.ExamTipsActivity;
 import com.example.itcode.gplx.Activity.LearnPracticeActivity;
 import com.example.itcode.gplx.Activity.LearnTheoryActivity;
@@ -76,6 +77,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.cvExamForGroup:
                 intent = new Intent(getActivity(),ExamForGroupActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.cvLearnTheory:
                 intent = new Intent(getActivity(),LearnTheoryActivity.class);
@@ -122,6 +124,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onClick(DialogInterface dialogInterface, int i) {
                 intent.putExtra("typeExam", typeExam);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
@@ -132,4 +135,5 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
         builder.show();
     }
+
 }

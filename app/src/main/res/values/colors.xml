@@ -2,14 +2,14 @@
 <resources>
     <color name="colorPrimary">#699AEE</color>
     <color name="colorPrimaryDark">#699AEE</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
 
     <!--Flash Screen-->
     <color name="colorBgFlashScreen">#FFFFFF</color>
     <color name="colorTitleFlashScreen">#FFFFFF</color>
 
     <!--Card View-->
-    <color name="colorCardGreen">#00BFA5</color>
+    <color name="colorCardGreen">#00bfa5</color>
     <color name="colorCardYellow">#FFB300</color>
     <color name="colorCardPurple">#7C4DFF</color>
     <color name="colorViewLine">#EDEDED</color>
@@ -21,7 +21,7 @@
     <!--Color List Basic-->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="green">#3BAC1F</color>
+    <color name="green">#3bac1f</color>
     <color name="blue">#699AEE</color>
     <color name="red">#F44336</color>
 

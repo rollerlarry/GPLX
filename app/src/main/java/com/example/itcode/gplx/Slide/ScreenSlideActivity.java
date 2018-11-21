@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
@@ -20,9 +21,11 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.itcode.gplx.Activity.ExamForGroupActivity;
 import com.example.itcode.gplx.Activity.ExamResultActivity;
+import com.example.itcode.gplx.Activity.HomeActivity;
 import com.example.itcode.gplx.Adapter.CheckAnswerAdapter;
 import com.example.itcode.gplx.Controller.QuestionControler;
 import com.example.itcode.gplx.DTO.Question;
@@ -40,13 +43,16 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
     public static final String QUESTION_ARRAY_LIST = "questionArrayList";
 
     private TextView tvTimer, tvFinish, tvExit;
+    private ImageView imageView;
     private CounterClass counterClassTimer;
 
-    private int typeExam;
+
+    public static int typeExam;
     private int checkFinish = 0;
     public static int checkDoAgain = 0;
     private LinearLayout bottomSheetLayout;
     private BottomSheetBehavior bottomSheetBehavior;
+    private int checkBottomSheet = 0;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -62,7 +68,7 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
     //CSDL
     private QuestionControler questionControler;
     private  ArrayList<Question> questionArrayList;
-    public static ArrayList<Question> questionArrayListOld = new ArrayList<>();;
+    public static ArrayList<Question> questionArrayListOld = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +93,24 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
 
         //Bottom sheet
         bottomSheetLayout = findViewById(R.id.bottomSheet);
+
+
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         //hidden bottom sheet
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
+        imageView = bottomSheetLayout.findViewById(R.id.imvBottomSheet);
+
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View view, int i) {
+                changStatusImageBottomSheet();
+            }
+
+            @Override
+            public void onSlide(@NonNull View view, float v) {
+            }
+        });
 
 
         //Get questionList
@@ -111,6 +131,7 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
         GridView gridView = findViewById(R.id.grvQuestion);
         gridView.setAdapter(checkAnswerAdapter);
 
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -121,6 +142,17 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
 
 
     }
+
+    public void changStatusImageBottomSheet(){
+        checkBottomSheet ++;
+        if (checkBottomSheet%2!=0){
+            imageView.setImageResource(R.drawable.ic_arrowdown);
+        } else{
+            imageView.setImageResource(R.drawable.arrowup);
+        }
+    }
+
+
 
     public void findView(){
         tvTimer = findViewById(R.id.tvTimer);
@@ -155,7 +187,13 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                backActivity();
+                counterClassTimer.cancel();
+                if (typeExam == 3){
+                    startActivity(new Intent(builder.getContext(), HomeActivity.class));
+                } else{
+                    startActivity(new Intent(builder.getContext(), ExamForGroupActivity.class));
+                }
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
@@ -167,35 +205,16 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
         builder.show();
     }
 
-    public void backActivity(){
-        Intent intent1 = new Intent(this, ExamForGroupActivity.class);
-        startActivity(intent1);
-    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-//            case R.id.imvBottomSheet:
-//                View view = getLayoutInflater().inflate(R.layout.fragment_bottom_sheet, null);
-//                final BottomSheetDialog dialog = new BottomSheetDialog(this);
-////                CheckAnswerAdapter checkAnswerAdapter = new CheckAnswerAdapter(questionArrayList, this);
-////                GridView gridView = dialog.findViewById(R.id.gvQuestionList);
-////                gridView.setAdapter(checkAnswerAdapter);
-////                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-////                    @Override
-////                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-////                        dialog.dismiss();
-////                    }
-////                });
-//                dialog.setContentView(view);
-//                dialog.show();
-//                break;
             case R.id.tvFinish:
                 finishExam();
                 break;
             case R.id.tvExit:
-                Intent intent1 = new Intent(this, ExamForGroupActivity.class);
-                startActivity(intent1);
+                startActivity(new Intent(this, HomeActivity.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             default:
                 break;
@@ -234,7 +253,10 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
         tvExit.setVisibility(View.VISIBLE);
         Intent intent = new Intent(this, ExamResultActivity.class);
         intent.putExtra(QUESTION_ARRAY_LIST, questionArrayList);
+        System.out.println(typeExam);
+        intent.putExtra("typeExam", typeExam);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     /**

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Flash Screen-->
-    <dimen name="widthLogo">215dp</dimen>
-    <dimen name="heightLogo">190dp</dimen>
+    <dimen name="widthLogo">250dp</dimen>
+    <dimen name="heightLogo">250dp</dimen>
     <dimen name="titleMarginTop">50dp</dimen>
     <dimen name="titleTextSize">22dp</dimen>
     <dimen name="layoutHightTitle">70dp</dimen>
@@ -11,9 +11,13 @@
     <dimen name="layoutHightButtonInfo">45dp</dimen>
     <dimen name="layoutHightButtonContact">45dp</dimen>
     <dimen name="layoutHight">150dp</dimen>
-    <dimen name="layoutWidthCardView">120dp</dimen>
-    <dimen name="layoutHightCardView">140dp</dimen>
-    <dimen name="radiusCardView">10dp</dimen>
-    <dimen name="layoutMarginRightCardView">20dp</dimen>
+    <dimen name="layoutWidthCardView">150dp</dimen>
+    <dimen name="layoutHightCardView">135dp</dimen>
+    <dimen name="radiusCardView">5dp</dimen>
+    <dimen name="layoutMarginRightCardView">10dp</dimen>
+    <dimen name="layoutMarginLeftCardView">10dp</dimen>
     <dimen name="elevationCardView">20dp</dimen>
+    <dimen name="layoutWidthHeightIcon">60dp</dimen>
+    <dimen name="layoutWidthLine">120dp</dimen>
+    <dimen name="marginTopLine">10dp</dimen>
 </resources>

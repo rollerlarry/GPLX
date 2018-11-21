@@ -55,6 +55,7 @@ public class ExamForGroupActivity extends AppCompatActivity implements View.OnCl
             public void onClick(DialogInterface dialogInterface, int i) {
                 intent.putExtra("typeExam", typeExam);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
@@ -70,5 +71,6 @@ public class ExamForGroupActivity extends AppCompatActivity implements View.OnCl
     public void onBackPressed() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

@@ -13,19 +13,15 @@ import com.example.itcode.gplx.R;
 
 public class FlashActivity extends AppCompatActivity {
     private ImageView ivLogo;
-    private TextView tvTitle;
-    SQLiteDatabase sqLiteDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash);
 
         ivLogo = findViewById(R.id.ivLogo);
-        tvTitle = findViewById(R.id.tvTitle);
 
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.flash_screen_transition);
         ivLogo.startAnimation(animation);
-        tvTitle.startAnimation(animation);
         Intent intentMain = new Intent(this,HomeActivity.class);
         Timer(intentMain);
     }
@@ -41,6 +37,7 @@ public class FlashActivity extends AppCompatActivity {
             }
             finally {
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 finish();
             }
             }

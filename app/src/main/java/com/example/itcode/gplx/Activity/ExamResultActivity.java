@@ -21,9 +21,11 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
     private int numNoAnswer = 0;
     private int numTrueAnswer = 0;
     private int numFalseAnswer = 0;
-    private Button tbtnTrueAnswer, tbtnFalseAnswer, tbtnNoAnswer, btnBack, btnDoAgain, btnBackTopic;
+    private Button tbtnTrueAnswer, tbtnFalseAnswer, tbtnNoAnswer, btnBack, btnDoAgain, btnBackTopic, btnBackHome;
     private TextView tvTrueAnswer, tvTotalAnswer, tvResult;
     private LinearLayout bgResult;
+
+    public static int typeExam = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,18 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
         //Get question list from screen slide
         Intent intent = getIntent();
         questionArrayList = (ArrayList<Question>) intent.getExtras().getSerializable(ScreenSlideActivity.QUESTION_ARRAY_LIST);
+        typeExam = intent.getExtras().getInt("typeExam");
+
 
         findView();
         setEvent();
         checkResult();
         resultInfo();
+
+        if (typeExam == 3){
+            btnBackTopic.setVisibility(View.GONE);
+            btnBackHome.setVisibility(View.VISIBLE);
+        }
     }
 
     public void findView(){
@@ -54,12 +63,14 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
         btnBack = findViewById(R.id.btnBack);
         btnDoAgain = findViewById(R.id.btnDoAgain);
         btnBackTopic = findViewById(R.id.btnBackTopic);
+        btnBackHome = findViewById(R.id.btnBackHome);
     }
 
     public void setEvent(){
         btnBack.setOnClickListener(this);
         btnDoAgain.setOnClickListener(this);
         btnBackTopic.setOnClickListener(this);
+        btnBackHome.setOnClickListener(this);
 
         tbtnNoAnswer.setOnClickListener(this);
         tbtnFalseAnswer.setOnClickListener(this);
@@ -102,29 +113,37 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
                 for (int i = 0; i < 4; i++) {
                     ScreenSlideActivity.mPager.setCurrentItem(i);
                 }
+                //Start show from question 1
                 ScreenSlideActivity.mPager.setCurrentItem(0);
-
                 //Call finish to back history exam
                 finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.btnDoAgain:
                 resetQuestionArrayList();
-                Intent intent1 = new Intent(this, ScreenSlideActivity.class);
                 ScreenSlideActivity.questionArrayListOld.clear();
                 ScreenSlideActivity.questionArrayListOld.addAll(questionArrayList);
                 ScreenSlideActivity.checkDoAgain = 1;
-                startActivity(intent1);
+                Intent intent = new Intent(this, ScreenSlideActivity.class);
+                intent.putExtra("typeExam", typeExam);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
                 break;
             case R.id.btnBackTopic:
-                Intent intent2 = new Intent(this, ExamForGroupActivity.class);
-                startActivity(intent2);
+                startActivity(new Intent(this, ExamForGroupActivity.class));
                 ScreenSlideActivity.checkDoAgain = 0;
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                break;
+            case R.id.btnBackHome:
+                startActivity(new Intent(this, HomeActivity.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.tbtnFalseAnswer:
                 Toast.makeText(this, "Câu trả lời sai", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tbtnNoAnswer:
-                Toast.makeText(this, "Câu trả chưa chọn", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Câu trả lời chưa chọn", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tbtnTrueAnswer:
                 Toast.makeText(this, "Câu trả lời đúng", Toast.LENGTH_SHORT).show();
@@ -137,5 +156,10 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
         for (int i = 0; i < questionArrayList.size(); i++) {
             questionArrayList.get(i).setUserAnswer("");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

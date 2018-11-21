@@ -87,4 +87,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnNotSelected1.setTextColor(getColor(R.color.white));
         btnNotSelected2.setTextColor(getColor(R.color.white));
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
