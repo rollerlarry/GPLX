@@ -55,13 +55,22 @@ public class TipsAdapter extends ArrayAdapter<Tip> {
         viewHolder.imgTips.setImageBitmap(bitmap);
 
 
-        viewHolder.acdvTips.setBodyBackGroundColor(0xFFE7EAED);
+//        viewHolder.acdvTips.setBodyBackGroundColor(0xFFE7EAED);
+//        if(type == 0)
+//            viewHolder.acdvTips.setHeadingBackGroundColor(0xFF2B579A);
+//        else if(type == 1)
+//            viewHolder.acdvTips.setHeadingBackGroundColor(0xFF217346);
+//        else
+//            viewHolder.acdvTips.setHeadingBackGroundColor(0xFFD24726);
+//        return convertView;
+
+        viewHolder.acdvTips.setBodyBackGroundColor(0xFFFFFFFF);
         if(type == 0)
-            viewHolder.acdvTips.setHeadingBackGroundColor(0xFF2B579A);
+            viewHolder.acdvTips.setHeadingBackGroundColor(0xFF83A2ED);
         else if(type == 1)
-            viewHolder.acdvTips.setHeadingBackGroundColor(0xFF217346);
+            viewHolder.acdvTips.setHeadingBackGroundColor(0xFF50B58B);
         else
-            viewHolder.acdvTips.setHeadingBackGroundColor(0xFFD24726);
+            viewHolder.acdvTips.setHeadingBackGroundColor(0xFFE48C73);
         return convertView;
     }
 

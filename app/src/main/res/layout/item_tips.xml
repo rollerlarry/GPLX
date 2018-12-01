@@ -12,6 +12,7 @@
         android:visibility="visible"
         app:isAnimated="false"
         app:heading="This is a demo accordion WORD"
+        app:headingBackgroundColor = "#fff"
         app:isExpanded="false"
         app:isPartitioned="true">
 

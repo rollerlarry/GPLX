@@ -15,13 +15,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.example.itcode.gplx.Activity.ExamForGroupActivity;
-import com.example.itcode.gplx.Activity.ExamResultActivity;
 import com.example.itcode.gplx.Activity.ExamTipsActivity;
 import com.example.itcode.gplx.Activity.LearnPracticeActivity;
 import com.example.itcode.gplx.Activity.LearnTheoryActivity;
 import com.example.itcode.gplx.Activity.SaveQuestionActivity;
 import com.example.itcode.gplx.R;
-import com.example.itcode.gplx.Slide.ScreenSlideActivity;
+import com.example.itcode.gplx.Slide.ScreenSlideForExamActivity;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     private CardView cvRandomExam, cvExamForGroup, cvLearnTheory, cvLearnPractice, cvExamTips, cvSaveQuestion;
@@ -90,6 +89,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.cvExamTips:
                 intent = new Intent(getActivity(),ExamTipsActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.cvSaveQuestion:
                 intent = new Intent(getActivity(),SaveQuestionActivity.class);
@@ -118,7 +118,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         builder.setIcon(R.drawable.bell);
         builder.setTitle("Thông báo");
         builder.setMessage(mes);
-        intent = new Intent(getActivity(), ScreenSlideActivity.class);
+        intent = new Intent(getActivity(), ScreenSlideForExamActivity.class);
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

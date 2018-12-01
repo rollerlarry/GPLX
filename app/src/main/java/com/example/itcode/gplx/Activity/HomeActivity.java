@@ -55,16 +55,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 fragment = new HomeFragment();
                 changeStatus(btnHome, btnInfo, btnContact);
                 replaceFragment();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.btnInfo :
                 fragment = new InfoFragment();
                 changeStatus(btnInfo, btnHome, btnContact);
                 replaceFragment();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.btnContact :
                 fragment = new ContactFragment();
                 changeStatus(btnContact, btnHome, btnInfo);
                 replaceFragment();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
         }
     }
@@ -74,6 +77,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameContent, fragment);
         fragmentTransaction.commit();
+
     }
 
     public void changeStatus(Button btnSelected, Button btnNotSelected1, Button btnNotSelected2){

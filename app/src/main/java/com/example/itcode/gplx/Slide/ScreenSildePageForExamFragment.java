@@ -1,7 +1,6 @@
 package com.example.itcode.gplx.Slide;
 
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,14 +12,13 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.itcode.gplx.DTO.Question;
 import com.example.itcode.gplx.R;
 
 import java.util.ArrayList;
 
-public class ScreenSilePageFragment extends Fragment implements View.OnClickListener{
+public class ScreenSildePageForExamFragment extends Fragment implements View.OnClickListener{
 
     public static final String ARG_PAGE = "page";
     public static final String ARG_CHECK_FINISH = "check_finish";
@@ -34,7 +32,7 @@ public class ScreenSilePageFragment extends Fragment implements View.OnClickList
     private RadioButton radA, radB, radC, radD;
     private ImageView imvQuestion;
 
-    public ScreenSilePageFragment() {
+    public ScreenSildePageForExamFragment() {
         // Required empty public constructor
     }
 
@@ -42,7 +40,7 @@ public class ScreenSilePageFragment extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
-                R.layout.fragment_screen_sile_page, container, false);
+                R.layout.fragment_screen_slide_page, container, false);
         findView(rootView);
 
         tvNumNext.setOnClickListener(this);
@@ -67,8 +65,8 @@ public class ScreenSilePageFragment extends Fragment implements View.OnClickList
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         questionArrayList = new ArrayList<>();
-        ScreenSlideActivity screenSlideActivity = (ScreenSlideActivity) getActivity();
-        questionArrayList = screenSlideActivity.getData();
+        ScreenSlideForExamActivity screenSlideForExamActivity = (ScreenSlideForExamActivity) getActivity();
+        questionArrayList = screenSlideForExamActivity.getData();
         pageNumberCurrent = getArguments().getInt(ARG_PAGE);
         checkFinish = getArguments().getInt(ARG_CHECK_FINISH);
 
@@ -111,7 +109,7 @@ public class ScreenSilePageFragment extends Fragment implements View.OnClickList
             public void onCheckedChanged(RadioGroup radioGroup, int checkedID) {
                 questionArrayList.get(pageNumberCurrent).choiceID = checkedID;
                 questionArrayList.get(pageNumberCurrent).setUserAnswer(getChoiceFromRadioButton(checkedID));
-                //ScreenSlideActivity.mPager.setCurrentItem(pageNumberCurrent + 1);
+                //ScreenSlideForExamActivity.mPager.setCurrentItem(pageNumberCurrent + 1);
             }
         });
     }
@@ -122,13 +120,13 @@ public class ScreenSilePageFragment extends Fragment implements View.OnClickList
         if (pageNumberCurrent == 4){ tvNumNext.setText(""); }else{ tvNumNext.setText("Câu : " + (pageNumberCurrent + 2)); }
     }
 
-    public static ScreenSilePageFragment screenSilePageFragment(int pageNumber, int checkFinish){
-        ScreenSilePageFragment screenSilePageFragment = new ScreenSilePageFragment();
+    public static ScreenSildePageForExamFragment screenSilePageFragment(int pageNumber, int checkFinish){
+        ScreenSildePageForExamFragment screenSildePageForExamFragment = new ScreenSildePageForExamFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_PAGE, pageNumber);
         bundle.putInt(ARG_CHECK_FINISH, checkFinish);
-        screenSilePageFragment.setArguments(bundle);
-        return screenSilePageFragment;
+        screenSildePageForExamFragment.setArguments(bundle);
+        return screenSildePageForExamFragment;
     }
 
     //Get value checked radiobutton -> A/B/C/D
@@ -179,10 +177,10 @@ public class ScreenSilePageFragment extends Fragment implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tvNumNext:
-                ScreenSlideActivity.mPager.setCurrentItem(pageNumberCurrent + 1);
+                ScreenSlideForExamActivity.mPager.setCurrentItem(pageNumberCurrent + 1);
                 break;
             case R.id.tvNumPrev:
-                ScreenSlideActivity.mPager.setCurrentItem(pageNumberCurrent - 1);
+                ScreenSlideForExamActivity.mPager.setCurrentItem(pageNumberCurrent - 1);
                 break;
         }
     }

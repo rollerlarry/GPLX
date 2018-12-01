@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.itcode.gplx.DTO.Question;
 import com.example.itcode.gplx.R;
-import com.example.itcode.gplx.Slide.ScreenSlideActivity;
+import com.example.itcode.gplx.Slide.ScreenSlideForExamActivity;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
 
         //Get question list from screen slide
         Intent intent = getIntent();
-        questionArrayList = (ArrayList<Question>) intent.getExtras().getSerializable(ScreenSlideActivity.QUESTION_ARRAY_LIST);
+        questionArrayList = (ArrayList<Question>) intent.getExtras().getSerializable(ScreenSlideForExamActivity.QUESTION_ARRAY_LIST);
         typeExam = intent.getExtras().getInt("typeExam");
 
 
@@ -111,20 +111,20 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
             case R.id.btnBack:
                 //Fix error of slide can not change status when finish
                 for (int i = 0; i < 4; i++) {
-                    ScreenSlideActivity.mPager.setCurrentItem(i);
+                    ScreenSlideForExamActivity.mPager.setCurrentItem(i);
                 }
                 //Start show from question 1
-                ScreenSlideActivity.mPager.setCurrentItem(0);
+                ScreenSlideForExamActivity.mPager.setCurrentItem(0);
                 //Call finish to back history exam
                 finish();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.btnDoAgain:
                 resetQuestionArrayList();
-                ScreenSlideActivity.questionArrayListOld.clear();
-                ScreenSlideActivity.questionArrayListOld.addAll(questionArrayList);
-                ScreenSlideActivity.checkDoAgain = 1;
-                Intent intent = new Intent(this, ScreenSlideActivity.class);
+                ScreenSlideForExamActivity.questionArrayListOld.clear();
+                ScreenSlideForExamActivity.questionArrayListOld.addAll(questionArrayList);
+                ScreenSlideForExamActivity.checkDoAgain = 1;
+                Intent intent = new Intent(this, ScreenSlideForExamActivity.class);
                 intent.putExtra("typeExam", typeExam);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -132,7 +132,7 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.btnBackTopic:
                 startActivity(new Intent(this, ExamForGroupActivity.class));
-                ScreenSlideActivity.checkDoAgain = 0;
+                ScreenSlideForExamActivity.checkDoAgain = 0;
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.btnBackHome:

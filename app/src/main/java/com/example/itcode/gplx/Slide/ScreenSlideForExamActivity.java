@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,12 +15,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.itcode.gplx.Activity.ExamForGroupActivity;
 import com.example.itcode.gplx.Activity.ExamResultActivity;
@@ -35,7 +32,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 
-public class ScreenSlideActivity extends FragmentActivity implements View.OnClickListener {
+public class ScreenSlideForExamActivity extends FragmentActivity implements View.OnClickListener {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
@@ -270,7 +267,7 @@ public class ScreenSlideActivity extends FragmentActivity implements View.OnClic
 
         @Override
         public Fragment getItem(int position) {
-            return ScreenSilePageFragment.screenSilePageFragment(position, checkFinish);
+            return ScreenSildePageForExamFragment.screenSilePageFragment(position, checkFinish);
         }
 
         @Override

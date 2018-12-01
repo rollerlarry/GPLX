@@ -48,7 +48,7 @@
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="51dp"
             android:background="@drawable/background_custom"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"

@@ -74,7 +74,8 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:src="@drawable/tips_bg" />
+        android:src="@drawable/tips_bg"
+        android:background="#fff"/>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
@@ -131,15 +132,15 @@
             android:background="@drawable/round_button_custom_nonselected"
             android:textColor="@color/white"
             />
-            <Button
+
+        <Button
             android:id="@+id/btnTipsPowerPoint"
             android:layout_width="191dp"
             android:layout_height="@dimen/layoutHightButtonInfo"
             android:layout_weight="1"
-            android:text="Mẹo PowerPoint"
             android:background="@drawable/round_button_custom_nonselected"
-            android:textColor="@color/white"
-            />
+            android:text="Mẹo PowerPoint"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

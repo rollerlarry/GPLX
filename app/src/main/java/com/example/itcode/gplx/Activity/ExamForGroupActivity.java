@@ -9,7 +9,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 
 import com.example.itcode.gplx.R;
-import com.example.itcode.gplx.Slide.ScreenSlideActivity;
+import com.example.itcode.gplx.Slide.ScreenSlideForExamActivity;
 
 public class ExamForGroupActivity extends AppCompatActivity implements View.OnClickListener {
     private CardView cvWordTopic,cvExcelTopic, cvPowerPointTopic;
@@ -49,7 +49,7 @@ public class ExamForGroupActivity extends AppCompatActivity implements View.OnCl
         builder.setIcon(R.drawable.bell);
         builder.setTitle("Thông báo");
         builder.setMessage(mes);
-        intent = new Intent(this, ScreenSlideActivity.class);
+        intent = new Intent(this, ScreenSlideForExamActivity.class);
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
