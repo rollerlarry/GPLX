@@ -24,7 +24,10 @@
         <activity android:name=".Activity.ExamTipsActivity" />
         <activity android:name=".Activity.SaveQuestionActivity" />
         <activity android:name=".Activity.ExamResultActivity" />
-        <activity android:name=".Slide.ScreenSlideActivity"></activity>
+        <activity android:name=".Slide.ScreenSlideActivity" />
+        <activity android:name=".Fragment.WordTipsFragment" />
+        <activity android:name=".Fragment.ExcelTipsFragment" />
+        <activity android:name=".Fragment.PowerPointTipsFragment"></activity>
     </application>
 
 </manifest>

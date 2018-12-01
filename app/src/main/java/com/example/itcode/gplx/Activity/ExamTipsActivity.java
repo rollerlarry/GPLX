@@ -1,6 +1,5 @@
 package com.example.itcode.gplx.Activity;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -8,15 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
-import com.example.itcode.gplx.Fragment.PracticeTipsFragment;
-import com.example.itcode.gplx.Fragment.TheoryTipsFragment;
+import com.example.itcode.gplx.Fragment.ExcelTipsFragment;
+import com.example.itcode.gplx.Fragment.PowerPointTipsFragment;
+import com.example.itcode.gplx.Fragment.WordTipsFragment;
 import com.example.itcode.gplx.R;
 
 public class ExamTipsActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btnPracticeTips;
-    private Button btnTheoryTips;
+    private Button btnTipsWord;
+    private Button btnTipsExcel;
+    private Button btnTipsPowerPoint;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private Fragment fragment;
@@ -30,19 +30,21 @@ public class ExamTipsActivity extends AppCompatActivity implements View.OnClickL
         setEvent();
 
         fragmentManager = getSupportFragmentManager();
-        fragment = new TheoryTipsFragment();
+        fragment = new WordTipsFragment();
         replaceFragment();
     }
 
     private void findView() {
-        btnPracticeTips = findViewById(R.id.btnPracticeTips);
-        btnTheoryTips = findViewById(R.id.btnTheoryTips);
+        btnTipsWord = findViewById(R.id.btnTipsWord);
+        btnTipsExcel = findViewById(R.id.btnTipsExcel);
+        btnTipsPowerPoint = findViewById(R.id.btnTipsPowerPoint);
 
     }
 
     private void setEvent() {
-        btnPracticeTips.setOnClickListener(this);
-        btnTheoryTips.setOnClickListener(this);
+        btnTipsWord.setOnClickListener(this);
+        btnTipsExcel.setOnClickListener(this);
+        btnTipsPowerPoint.setOnClickListener(this);
     }
 
 
@@ -52,28 +54,34 @@ public class ExamTipsActivity extends AppCompatActivity implements View.OnClickL
         fragmentTransaction.commit();
     }
 
-    private void changeStatus(Button btnSelected, Button btnNotSelected){
+    public void changeStatus(Button btnSelected, Button btnNotSelected1, Button btnNotSelected2){
+        //Properties button selected
         btnSelected.setBackground(getDrawable(R.drawable.round_button_custom_selected));
-        btnNotSelected.setBackground(getDrawable(R.drawable.round_button_custom_nonselected));
         btnSelected.setTextColor(getColor(R.color.black));
 
-        btnNotSelected.setBackground(getDrawable(R.drawable.round_button_custom_nonselected));
-        btnNotSelected.setTextColor(getColor(R.color.white));
-
-
+        //Properties button not selected
+        btnNotSelected1.setBackground(getDrawable(R.drawable.round_button_custom_nonselected));
+        btnNotSelected2.setBackground(getDrawable(R.drawable.round_button_custom_nonselected));
+        btnNotSelected1.setTextColor(getColor(R.color.white));
+        btnNotSelected2.setTextColor(getColor(R.color.white));
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnTheoryTips:
-                fragment = new TheoryTipsFragment();
-                changeStatus(btnTheoryTips, btnPracticeTips);
+            case R.id.btnTipsWord :
+                fragment = new WordTipsFragment();
+                changeStatus(btnTipsWord, btnTipsExcel, btnTipsPowerPoint);
                 replaceFragment();
                 break;
-            case R.id.btnPracticeTips:
-                fragment = new PracticeTipsFragment();
-                changeStatus(btnPracticeTips, btnTheoryTips);
+            case R.id.btnTipsExcel :
+                fragment = new ExcelTipsFragment();
+                changeStatus(btnTipsExcel, btnTipsWord, btnTipsPowerPoint);
+                replaceFragment();
+                break;
+            case R.id.btnTipsPowerPoint :
+                fragment = new PowerPointTipsFragment();
+                changeStatus(btnTipsPowerPoint, btnTipsWord, btnTipsExcel);
                 replaceFragment();
                 break;
         }
