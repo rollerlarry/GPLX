@@ -18,7 +18,112 @@ public class QuestionDAO {
     public QuestionDAO(Context context){
         dbHelper = new DBHelper(context);
     }
+//    public int countQuestion(int type)
+//    {
+//        int count=0;
+//        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+//        String sqlSelect ="";
+//        if (type==0)
+//        {
+//            Cursor cursor;
+//            sqlSelect = "SELECT COUNT(*) FROM '"+TB_TABLE +"'" +
+//                    "WHERE ID_LoaiCauHoi= '" +type +"'";
+//            cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
+//            if (cursor.moveToFirst()){
+//                count=cursor.getInt(0);
+//            }
+//        }
+//        else
+//            if (type==1)
+//            {
+//                Cursor cursor;
+//                sqlSelect = "SELECT COUNT(*) FROM '"+TB_TABLE +"'" +
+//                        "WHERE ID_LoaiCauHoi= '" +type +"'";
+//                cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
+//                if (cursor.moveToFirst()){
+//                    count=cursor.getInt(0);
+//                }
+//            }
+//            else
+//                if(type==2)
+//                {
+//                    Cursor cursor;
+//                    sqlSelect = "SELECT COUNT(*) FROM '"+TB_TABLE +"'" +
+//                            "WHERE ID_LoaiCauHoi= '" +type +"'";
+//                    cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
+//                    if (cursor.moveToFirst()){
+//                        count=cursor.getInt(0);
+//                    }
+//                }
+//        sqLiteDatabase.close();
+//        return count;
+//    }
+    public int countQuestion(int type)
+    {
+        int count = 0;
+        ArrayList<Question> questionArrayList;
+        questionArrayList = getQuestionDatabase(type);
+        count = questionArrayList.size();
+        return count;
+    }
+    public ArrayList<Question> getQuestionDatabase(int type)
+    {
+        ArrayList<Question> questionDatabaseArrayList = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        String sqlSelect ="";
+        if(type==0)
+        {
+            Cursor cursor;
+            sqlSelect = "SELECT * FROM '"+TB_TABLE +"'" +
+                    "WHERE ID_LoaiCauHoi= '" +type +"'";
+            cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
+            if (cursor.moveToFirst()){
+                do {
+                    Question question = new Question(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6),
+                            cursor.getString(7), cursor.getString(8), null);
 
+                    questionDatabaseArrayList.add(question);
+                }while (cursor.moveToNext());
+            }
+        }
+        else
+            if(type==1)
+            {
+                Cursor cursor;
+                sqlSelect = "SELECT * FROM '"+TB_TABLE +"'" +
+                        "WHERE ID_LoaiCauHoi= '" +type +"'";
+                cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
+                if (cursor.moveToFirst()){
+                    do {
+                        Question question = new Question(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+                                cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6),
+                                cursor.getString(7), cursor.getString(8), null);
+
+                        questionDatabaseArrayList.add(question);
+                    }while (cursor.moveToNext());
+                }
+            }
+            else
+                if(type==2)
+                {
+                    Cursor cursor;
+                    sqlSelect = "SELECT * FROM '"+TB_TABLE +"'" +
+                            "WHERE ID_LoaiCauHoi= '" +type +"'";
+                    cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
+                    if (cursor.moveToFirst()){
+                        do {
+                            Question question = new Question(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+                                    cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6),
+                                    cursor.getString(7), cursor.getString(8), null);
+
+                            questionDatabaseArrayList.add(question);
+                        }while (cursor.moveToNext());
+                    }
+                }
+        sqLiteDatabase.close();
+        return questionDatabaseArrayList;
+    }
     public ArrayList<Question> getQuestionList(int typeExam){
         ArrayList<Question> questionArrayList = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
@@ -66,9 +171,6 @@ public class QuestionDAO {
                     questionArrayList.add(question);
                 }while (cursor.moveToNext());
             }
-//            sqlSelect ="SELECT * FROM '"+TB_TABLE +"'" +
-//                    "WHERE ID_LoaiCauHoi= '" +type[0] +"' OR ID_LoaiCauHoi= '" +type[1] +"' OR ID_LoaiCauHoi= '" +type[2]+"'"+
-//                    "ORDER BY RANDOM() LIMIT 5";
         }
         else
         {
