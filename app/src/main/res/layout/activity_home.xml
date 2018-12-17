@@ -54,13 +54,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             >
-            <Button
-                android:id="@+id/btnHome"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/round_button_custom_selected"
-                android:text="@string/textButtonHome" />
 
             <Button
                 android:id="@+id/btnInfo"
@@ -70,6 +63,14 @@
                 android:background="@drawable/round_button_custom_nonselected"
                 android:text="@string/textButtonInfo"
                 android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnHome"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_button_custom_selected"
+                android:text="@string/textButtonHome" />
 
             <Button
                 android:id="@+id/btnContact"

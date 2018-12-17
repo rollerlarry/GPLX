@@ -102,7 +102,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (dbExist) {
             //khong lam gi ca, database da co roi
-            copyDataBase();
+            //copyDataBase();
         } else {
             this.getReadableDatabase();
             try {

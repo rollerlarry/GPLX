@@ -14,6 +14,7 @@ public class Question implements Serializable{
     private String imageQuestion;
     private String userAnswer;
     public int choiceID = -1;
+    private int questionSave;
 
     public Question(int questionID, int questionTypeID, String textQuestion, String answerA, String answerB, String answerC, String answerD, String answerTrue, String imageQuestion, String userAnswer) {
         this.questionID = questionID;
@@ -26,6 +27,20 @@ public class Question implements Serializable{
         this.answerTrue = answerTrue;
         this.imageQuestion = imageQuestion;
         this.userAnswer = userAnswer;
+    }
+
+    public Question(int questionID, int questionTypeID, String textQuestion, String answerA, String answerB, String answerC, String answerD, String answerTrue, String imageQuestion, String userAnswer, int questionSave) {
+        this.questionID = questionID;
+        this.questionTypeID = questionTypeID;
+        this.textQuestion = textQuestion;
+        this.answerA = answerA;
+        this.answerB = answerB;
+        this.answerC = answerC;
+        this.answerD = answerD;
+        this.answerTrue = answerTrue;
+        this.imageQuestion = imageQuestion;
+        this.userAnswer = userAnswer;
+        this.questionSave = questionSave;
     }
 
     public Question() {
@@ -110,5 +125,13 @@ public class Question implements Serializable{
 
     public void setUserAnswer(String userAnswer) {
         this.userAnswer = userAnswer;
+    }
+
+    public int getQuestionSave() {
+        return questionSave;
+    }
+
+    public void setQuestionSave(int questionSave) {
+        this.questionSave = questionSave;
     }
 }

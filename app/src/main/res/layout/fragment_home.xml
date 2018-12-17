@@ -197,7 +197,7 @@
                 <ImageView
                     android:layout_width="@dimen/layoutWidthHeightIcon"
                     android:layout_height="@dimen/layoutWidthHeightIcon"
-                    android:src="@drawable/ic_analytics" />
+                    android:src="@drawable/notepad" />
 
                 <View
                     android:layout_width="match_parent"
@@ -209,7 +209,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Ôn Tập Thực Hành"
+                    android:text="Câu Hỏi Hay Sai"
                     android:textSize="15dp"
                     android:textStyle="bold" />
             </LinearLayout>

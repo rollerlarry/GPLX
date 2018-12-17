@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.HomeActivity" />
-        <activity android:name=".Activity.RandomExamActivity" />
         <activity android:name=".Activity.ExamForGroupActivity" />
         <activity android:name=".Activity.LearnTheoryActivity" />
         <activity android:name=".Activity.LearnPracticeActivity" />
@@ -27,7 +26,8 @@
         <activity android:name=".Slide.ScreenSlideForExamActivity" />
         <activity android:name=".Fragment.WordTipsFragment" />
         <activity android:name=".Fragment.ExcelTipsFragment" />
-        <activity android:name=".Fragment.PowerPointTipsFragment"></activity>
+        <activity android:name=".Fragment.PowerPointTipsFragment" />
+        <activity android:name=".Slide.ScreenSlideForLearnTheoryActivity"></activity>
     </application>
 
 </manifest>

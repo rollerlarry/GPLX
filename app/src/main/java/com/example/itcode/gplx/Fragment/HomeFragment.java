@@ -81,6 +81,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.cvLearnTheory:
                 intent = new Intent(getActivity(),LearnTheoryActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.cvLearnPractice:
                 intent = new Intent(getActivity(),LearnPracticeActivity.class);
@@ -93,7 +94,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.cvSaveQuestion:
                 intent = new Intent(getActivity(),SaveQuestionActivity.class);
-                startActivity(intent); break;
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
         }
     }
 
