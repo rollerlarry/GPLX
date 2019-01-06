@@ -117,7 +117,7 @@ public class ScreenSildePageForExamFragment extends Fragment implements View.OnC
     public void pagerNumberDisplay(){
         if (pageNumberCurrent == 0){ tvNumPrev.setText(""); }else{ tvNumPrev.setText("Câu : " + (pageNumberCurrent)); }
         tvNumCurrent.setText("Câu : " + (pageNumberCurrent +1));
-        if (pageNumberCurrent == 4){ tvNumNext.setText(""); }else{ tvNumNext.setText("Câu : " + (pageNumberCurrent + 2)); }
+        if (pageNumberCurrent == questionArrayList.size()-1){ tvNumNext.setText(""); }else{ tvNumNext.setText("Câu : " + (pageNumberCurrent + 2)); }
     }
 
     public static ScreenSildePageForExamFragment screenSilePageFragment(int pageNumber, int checkFinish){

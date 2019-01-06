@@ -36,7 +36,7 @@ public class ScreenSlideForExamActivity extends FragmentActivity implements View
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 10;
     public static final String QUESTION_ARRAY_LIST = "questionArrayList";
 
     private TextView tvTimer, tvFinish, tvExit;
@@ -85,7 +85,7 @@ public class ScreenSlideForExamActivity extends FragmentActivity implements View
         typeExam = intent.getIntExtra("typeExam", 1);
 
         //Start counter
-        counterClassTimer = new CounterClass(60*1000, 1000);
+        counterClassTimer = new CounterClass(180*1000, 1000);
         counterClassTimer.start();
 
         //Bottom sheet

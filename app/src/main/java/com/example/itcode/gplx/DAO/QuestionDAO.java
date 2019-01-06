@@ -138,7 +138,7 @@ public class QuestionDAO {
             type[2]=2;
             Cursor cursor;
             String sqlSelect0 = "SELECT * FROM '"+TB_TABLE +"'" +
-                    "WHERE ID_LoaiCauHoi= '" +type[0] +"' ORDER BY RANDOM() LIMIT 2";
+                    "WHERE ID_LoaiCauHoi= '" +type[0] +"' ORDER BY RANDOM() LIMIT 3";
             cursor = sqLiteDatabase.rawQuery(sqlSelect0, null);
             if (cursor.moveToFirst()){
                 do {
@@ -150,7 +150,7 @@ public class QuestionDAO {
                 }while (cursor.moveToNext());
             }
             String sqlSelect1 = "SELECT * FROM '"+TB_TABLE +"'" +
-                    "WHERE ID_LoaiCauHoi= '" +type[1] +"' ORDER BY RANDOM() LIMIT 2";
+                    "WHERE ID_LoaiCauHoi= '" +type[1] +"' ORDER BY RANDOM() LIMIT 3";
             cursor = sqLiteDatabase.rawQuery(sqlSelect1, null);
             if (cursor.moveToFirst()){
                 do {
@@ -162,7 +162,7 @@ public class QuestionDAO {
                 }while (cursor.moveToNext());
             }
             String sqlSelect2 = "SELECT * FROM '"+TB_TABLE +"'" +
-                    "WHERE ID_LoaiCauHoi= '" +type[2] +"' ORDER BY RANDOM() LIMIT 1";
+                    "WHERE ID_LoaiCauHoi= '" +type[2] +"' ORDER BY RANDOM() LIMIT 4";
             cursor = sqLiteDatabase.rawQuery(sqlSelect2, null);
             if (cursor.moveToFirst()){
                 do {
@@ -176,7 +176,7 @@ public class QuestionDAO {
         }
         else
         {
-            sqlSelect = "SELECT * FROM '"+TB_TABLE + "'WHERE ID_LoaiCauHoi = '" +typeExam + "'LIMIT 5";
+            sqlSelect = "SELECT * FROM '"+TB_TABLE + "'WHERE ID_LoaiCauHoi = '" +typeExam + "'LIMIT 10";
             Cursor cursor = sqLiteDatabase.rawQuery(sqlSelect, null);
             if (cursor.moveToFirst()){
                 do {
