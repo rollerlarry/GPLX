@@ -30,6 +30,8 @@ public class ScreenSlideForLearnTheoryFragment extends Fragment implements View.
 
     private TextView tvQuestion, tvAnswerTrue, tvNumPrev, tvNumCurrent, tvNumNext;
     private ImageView imvQuestion, imvSaveQuestion;
+    private RadioGroup radioGroup;
+    private RadioButton radA, radB, radC, radD;
 
     public ScreenSlideForLearnTheoryFragment() {
         // Required empty public constructor
@@ -43,24 +45,33 @@ public class ScreenSlideForLearnTheoryFragment extends Fragment implements View.
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_screen_slide_for_learn_theory, container, false);
         tvQuestion = rootView.findViewById(R.id.tvQuestion);
-        tvAnswerTrue = rootView.findViewById(R.id.tvAnswerTrue);
+        //tvAnswerTrue = rootView.findViewById(R.id.tvAnswerTrue);
         tvNumPrev = rootView.findViewById(R.id.tvNumPrev);
         tvNumCurrent = rootView.findViewById(R.id.tvNumCurrent);
         tvNumNext = rootView.findViewById(R.id.tvNumNext);
         imvQuestion = rootView.findViewById(R.id.imvQuestion);
         imvSaveQuestion = rootView.findViewById(R.id.imvSaveQuestion);
 
+        radioGroup = rootView.findViewById(R.id.radGroup);
+        radA = rootView.findViewById(R.id.radA);
+        radB = rootView.findViewById(R.id.radB);
+        radC = rootView.findViewById(R.id.radC);
+        radD = rootView.findViewById(R.id.radD);
+
         tvNumNext.setOnClickListener(this);
         tvNumPrev.setOnClickListener(this);
         imvSaveQuestion.setOnClickListener(this);
 
         QuestionControler questionControler = new QuestionControler(getActivity());
+
         int checkStateQuestionSave = questionControler.getStateQuestionSave(questionArrayList.get(pageNumberCurrent).getQuestionID());
+
         if (checkStateQuestionSave == 0){
             imvSaveQuestion.setImageDrawable(getResources().getDrawable(R.drawable.starnot));
         } else {
             imvSaveQuestion.setImageDrawable(getResources().getDrawable(R.drawable.star));
         }
+
         return rootView;
     }
 
@@ -89,13 +100,19 @@ public class ScreenSlideForLearnTheoryFragment extends Fragment implements View.
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         tvQuestion.setText(questionArrayList.get(pageNumberCurrent).getTextQuestion());
+        radA.setText(getItem(pageNumberCurrent).getAnswerA());
+        radB.setText(getItem(pageNumberCurrent).getAnswerB());
+        radC.setText(getItem(pageNumberCurrent).getAnswerC());
+        radD.setText(getItem(pageNumberCurrent).getAnswerD());
         pagerNumberDisplay();
 
         //Image question
         if (getItem(pageNumberCurrent).getImageQuestion() != null){
             imvQuestion.setImageResource(getResources().getIdentifier(getItem(pageNumberCurrent).getImageQuestion()+"","drawable", "com.example.itcode.gplx"));
         }
-        tvAnswerTrue.setText("ĐÁP ÁN : " + getCheckAnswer(questionArrayList.get(pageNumberCurrent).getAnswerTrue()));
+        //tvAnswerTrue.setText("ĐÁP ÁN : " + getCheckAnswer(questionArrayList.get(pageNumberCurrent).getAnswerTrue()));
+
+        getCheckAnswer(getItem(pageNumberCurrent).getAnswerTrue().toString(), questionArrayList.get(pageNumberCurrent).getUserAnswer());
     }
 
     //Check answer true
@@ -116,6 +133,23 @@ public class ScreenSlideForLearnTheoryFragment extends Fragment implements View.
         if (pageNumberCurrent == 0){ tvNumPrev.setText(""); }else{ tvNumPrev.setText("Câu : " + (pageNumberCurrent)); }
         tvNumCurrent.setText("Câu : " + (pageNumberCurrent +1));
         if (pageNumberCurrent == questionArrayList.size()-1){ tvNumNext.setText(""); }else{ tvNumNext.setText("Câu : " + (pageNumberCurrent + 2)); }
+    }
+
+    //Check answer true
+    private void getCheckAnswer(String trueAnswer, String userAnswer){
+        if (trueAnswer.equals("A")){
+            radA.setChecked(true);
+            radA.setBackgroundColor(Color.GREEN);
+        } else if (trueAnswer.equals("B")){
+            radB.setChecked(true);
+            radB.setBackgroundColor(Color.GREEN);
+        } else if (trueAnswer.equals("C")){
+            radC.setChecked(true);
+            radC.setBackgroundColor(Color.GREEN);
+        } else if (trueAnswer.equals("D")){
+            radD.setChecked(true);
+            radD.setBackgroundColor(Color.GREEN);
+        }else ;
     }
 
     @Override

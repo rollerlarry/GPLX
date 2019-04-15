@@ -86,6 +86,11 @@
                     </View>
                 </android.support.constraint.ConstraintLayout>
 
+                <ImageView
+                    android:id="@+id/imvType"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/word"/>
                 <TextView
                     android:id="@+id/tvQuestion"
                     android:layout_width="match_parent"
@@ -94,13 +99,13 @@
                     android:text="Câu hỏi thứ nhất "
                     android:textColor="#000000"
                     android:textSize="20sp"
-                    android:textStyle="italic" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/imvQuestion"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:layout_margin="0dp"
                 android:padding="0dp"

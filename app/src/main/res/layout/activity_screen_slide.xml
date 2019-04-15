@@ -85,11 +85,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvExit"
+                    android:id="@+id/tvBack"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Thoát"
+                    android:text="Quay Lại"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
                     android:textStyle="bold"

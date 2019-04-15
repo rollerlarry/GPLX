@@ -1,6 +1,7 @@
 package com.example.itcode.gplx.Slide;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.itcode.gplx.DTO.Question;
 import com.example.itcode.gplx.R;
@@ -31,6 +33,7 @@ public class ScreenSildePageForExamFragment extends Fragment implements View.OnC
     private RadioGroup radioGroup;
     private RadioButton radA, radB, radC, radD;
     private ImageView imvQuestion;
+    private ImageView imvType;
 
     public ScreenSildePageForExamFragment() {
         // Required empty public constructor
@@ -42,6 +45,15 @@ public class ScreenSildePageForExamFragment extends Fragment implements View.OnC
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_screen_slide_page, container, false);
         findView(rootView);
+
+        int type = questionArrayList.get(pageNumberCurrent).getQuestionTypeID();
+        if (type == 0){
+            imvType.setImageDrawable(getContext().getDrawable(R.drawable.word));
+        }else if (type == 1){
+            imvType.setImageDrawable(getContext().getDrawable(R.drawable.excel));
+        }else{
+            imvType.setImageDrawable(getContext().getDrawable(R.drawable.powerpoint));
+        }
 
         tvNumNext.setOnClickListener(this);
         tvNumPrev.setOnClickListener(this);
@@ -60,6 +72,7 @@ public class ScreenSildePageForExamFragment extends Fragment implements View.OnC
         tvNumNext = rootView.findViewById(R.id.tvNumNext);
 
         imvQuestion = rootView.findViewById(R.id.imvQuestion);
+        imvType = rootView.findViewById(R.id.imvType);
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

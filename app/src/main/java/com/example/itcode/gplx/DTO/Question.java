@@ -12,7 +12,7 @@ public class Question implements Serializable{
     private String answerD;
     private String answerTrue;
     private String imageQuestion;
-    private String userAnswer;
+    private String userAnswer = "";
     public int choiceID = -1;
     private int questionSave;
 

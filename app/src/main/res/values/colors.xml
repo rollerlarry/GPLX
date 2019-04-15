@@ -5,7 +5,7 @@
     <color name="colorAccent">#ff4081</color>
 
     <!--Flash Screen-->
-    <color name="colorBgFlashScreen">#FFFFFF</color>
+    <color name="colorBgFlashScreen">#ffffff</color>
     <color name="colorTitleFlashScreen">#FFFFFF</color>
 
     <!--Card View-->
@@ -15,7 +15,7 @@
     <color name="colorViewLine">#EDEDED</color>
     <color name="colorDark">#BDBDBD</color>
 
-    <color name="backgroundTitle">#3F42DF</color>
+    <color name="backgroundTitle">#3f42df</color>
 
 
     <!--Color List Basic-->

@@ -25,6 +25,7 @@ import com.example.itcode.gplx.Activity.ExamResultActivity;
 import com.example.itcode.gplx.Activity.HomeActivity;
 import com.example.itcode.gplx.Adapter.CheckAnswerAdapter;
 import com.example.itcode.gplx.Controller.QuestionControler;
+import com.example.itcode.gplx.DAO.DataModel;
 import com.example.itcode.gplx.DTO.Question;
 import com.example.itcode.gplx.R;
 
@@ -39,7 +40,7 @@ public class ScreenSlideForExamActivity extends FragmentActivity implements View
     private static final int NUM_PAGES = 10;
     public static final String QUESTION_ARRAY_LIST = "questionArrayList";
 
-    private TextView tvTimer, tvFinish, tvExit;
+    private TextView tvTimer, tvFinish, tvBack;
     private ImageView imageView;
     private CounterClass counterClassTimer;
 
@@ -154,12 +155,12 @@ public class ScreenSlideForExamActivity extends FragmentActivity implements View
     public void findView(){
         tvTimer = findViewById(R.id.tvTimer);
         tvFinish = findViewById(R.id.tvFinish);
-        tvExit = findViewById(R.id.tvExit);
+        tvBack = findViewById(R.id.tvBack);
     }
 
     public void setEvent(){
         tvFinish.setOnClickListener(this);
-        tvExit.setOnClickListener(this);
+        tvBack.setOnClickListener(this);
     }
 
     public ArrayList<Question> getData(){
@@ -209,8 +210,8 @@ public class ScreenSlideForExamActivity extends FragmentActivity implements View
             case R.id.tvFinish:
                 finishExam();
                 break;
-            case R.id.tvExit:
-                startActivity(new Intent(this, HomeActivity.class));
+            case R.id.tvBack:
+                startActivity(new Intent(this, ExamResultActivity.class));
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             default:
@@ -247,10 +248,22 @@ public class ScreenSlideForExamActivity extends FragmentActivity implements View
         counterClassTimer.cancel();
         checkFinish = 1;
         tvFinish.setVisibility(View.GONE);
-        tvExit.setVisibility(View.VISIBLE);
+        tvBack.setVisibility(View.VISIBLE);
         Intent intent = new Intent(this, ExamResultActivity.class);
+
+
+        for (int i = 0; i < questionArrayList.size(); i++) {
+            if (questionArrayList.get(i).getUserAnswer() == null){
+                questionArrayList.get(i).setUserAnswer("");
+            }
+        }
+
         intent.putExtra(QUESTION_ARRAY_LIST, questionArrayList);
-        System.out.println(typeExam);
+
+
+        DataModel.QuestionArrayList = questionArrayList;
+        DataModel.TypeExam = typeExam;
+
         intent.putExtra("typeExam", typeExam);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

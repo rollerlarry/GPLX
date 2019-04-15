@@ -60,14 +60,14 @@ public class QuestionDAO {
 //        sqLiteDatabase.close();
 //        return count;
 //    }
-    public int countQuestion(int type)
-    {
-        int count = 0;
-        ArrayList<Question> questionArrayList;
-        questionArrayList = getQuestionDatabase(type);
-        count = questionArrayList.size();
-        return count;
-    }
+//    public int countQuestion(int type)
+//    {
+//        int count = 0;
+//        ArrayList<Question> questionArrayList;
+//        questionArrayList = getQuestionDatabase(type);
+//        count = questionArrayList.size();
+//        return count;
+//    }
     public ArrayList<Question> getQuestionDatabase(int type)
     {
         ArrayList<Question> questionDatabaseArrayList = new ArrayList<>();

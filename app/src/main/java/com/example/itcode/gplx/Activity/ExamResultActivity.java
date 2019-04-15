@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.itcode.gplx.DAO.DataModel;
 import com.example.itcode.gplx.DTO.Question;
 import com.example.itcode.gplx.R;
 import com.example.itcode.gplx.Slide.ScreenSlideForExamActivity;
@@ -35,9 +36,13 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
 
         //Get question list from screen slide
         Intent intent = getIntent();
-        questionArrayList = (ArrayList<Question>) intent.getExtras().getSerializable(ScreenSlideForExamActivity.QUESTION_ARRAY_LIST);
-        typeExam = intent.getExtras().getInt("typeExam");
-
+        try {
+            questionArrayList = (ArrayList<Question>) intent.getExtras().getSerializable(ScreenSlideForExamActivity.QUESTION_ARRAY_LIST);
+            typeExam = intent.getExtras().getInt("typeExam");
+        }catch (Exception ex){
+            questionArrayList = DataModel.QuestionArrayList;
+            typeExam = DataModel.TypeExam;
+        }
 
         findView();
         setEvent();
@@ -80,7 +85,7 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
     //Check result
     public void checkResult(){
         for (int i = 0; i < questionArrayList.size(); i++) {
-            if (questionArrayList.get(i).getUserAnswer() == null){
+            if (questionArrayList.get(i).getUserAnswer() == ""){
                 numNoAnswer++;
             }else if (questionArrayList.get(i).getAnswerTrue().equals(questionArrayList.get(i).getUserAnswer()) == true){
                 numTrueAnswer++;
@@ -123,6 +128,7 @@ public class ExamResultActivity extends AppCompatActivity implements View.OnClic
                 resetQuestionArrayList();
                 ScreenSlideForExamActivity.questionArrayListOld.clear();
                 ScreenSlideForExamActivity.questionArrayListOld.addAll(questionArrayList);
+
                 ScreenSlideForExamActivity.checkDoAgain = 1;
                 Intent intent = new Intent(this, ScreenSlideForExamActivity.class);
                 intent.putExtra("typeExam", typeExam);

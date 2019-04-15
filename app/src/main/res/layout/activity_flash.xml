@@ -5,12 +5,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    android:gravity="center">
+    android:gravity="center"
+    >
 
     <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="@dimen/widthLogo"
         android:layout_height="@dimen/widthLogo"
-        android:layout_gravity="center"
-        android:src="@drawable/logo3" />
+        android:layout_marginTop="-50dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/intro" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="ỨNG DỤNG ÔN THI TIN HỌC"
+        android:textAlignment="center"
+        android:textColor="@color/backgroundTitle"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+
 </LinearLayout>

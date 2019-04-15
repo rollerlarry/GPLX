@@ -23,7 +23,7 @@ import com.example.itcode.gplx.R;
 import com.example.itcode.gplx.Slide.ScreenSlideForExamActivity;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    private CardView cvRandomExam, cvExamForGroup, cvLearnTheory, cvLearnPractice, cvExamTips, cvSaveQuestion;
+    private CardView cvRandomExam, cvExamForGroup, cvLearnTheory, cvExamTips, cvSaveQuestion;
     private Animation animationCardViewRight, animationCardViewLeft;
     private Intent intent;
     @Nullable
@@ -51,7 +51,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         cvRandomExam = view.findViewById(R.id.cvRandomExam);
         cvExamForGroup = view.findViewById(R.id.cvExamForGroup);
         cvLearnTheory = view.findViewById(R.id.cvLearnTheory);
-        cvLearnPractice = view.findViewById(R.id.cvLearnPractice);
         cvExamTips = view.findViewById(R.id.cvExamTips);
         cvSaveQuestion = view.findViewById(R.id.cvSaveQuestion);
     }
@@ -60,7 +59,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         cvRandomExam.setOnClickListener(this);
         cvExamForGroup.setOnClickListener(this);
         cvLearnTheory.setOnClickListener(this);
-        cvLearnPractice.setOnClickListener(this);
         cvExamTips.setOnClickListener(this);
         cvSaveQuestion.setOnClickListener(this);
     }
@@ -83,10 +81,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
-            case R.id.cvLearnPractice:
-                intent = new Intent(getActivity(),LearnPracticeActivity.class);
-                startActivity(intent);
-                break;
             case R.id.cvExamTips:
                 intent = new Intent(getActivity(),ExamTipsActivity.class);
                 startActivity(intent);
@@ -106,7 +100,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     public void setAnimationRight(){
-        cvLearnPractice.setAnimation(animationCardViewRight);
         cvSaveQuestion.setAnimation(animationCardViewRight);
         cvExamForGroup.setAnimation(animationCardViewRight);
     }

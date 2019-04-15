@@ -39,6 +39,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/subTitle"
+                    android:textSize="16dp"
                     android:textColor="@color/white" />
 
             </LinearLayout>

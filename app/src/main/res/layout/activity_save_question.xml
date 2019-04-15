@@ -27,6 +27,15 @@
                 />
         </LinearLayout>
     </LinearLayout>
+    <EditText
+        android:id="@+id/edtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tìm kiếm câu hỏi ..."
+        android:focusableInTouchMode="true"
+        android:layout_margin="20dp"
+        />
+
     <ListView
         android:id="@+id/lvSaveQuestion"
         android:layout_width="match_parent"

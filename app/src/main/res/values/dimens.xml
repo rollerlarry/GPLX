@@ -6,7 +6,7 @@
     <dimen name="titleMarginTop">50dp</dimen>
     <dimen name="titleTextSize">22dp</dimen>
     <dimen name="layoutHightTitle">70dp</dimen>
-    <dimen name="textSizeTitle">20sp</dimen>
+    <dimen name="textSizeTitle">25sp</dimen>
     <dimen name="layoutHightButtonHome">45dp</dimen>
     <dimen name="layoutHightButtonInfo">45dp</dimen>
     <dimen name="layoutHightButtonContact">45dp</dimen>

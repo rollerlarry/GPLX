@@ -27,7 +27,13 @@
         <activity android:name=".Fragment.WordTipsFragment" />
         <activity android:name=".Fragment.ExcelTipsFragment" />
         <activity android:name=".Fragment.PowerPointTipsFragment" />
-        <activity android:name=".Slide.ScreenSlideForLearnTheoryActivity"></activity>
+        <activity android:name=".Slide.ScreenSlideForLearnTheoryActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Activity.PopupSaveQuestionActivity" android:theme="@style/AppTheme.Popup"></activity>
     </application>
 
 </manifest>

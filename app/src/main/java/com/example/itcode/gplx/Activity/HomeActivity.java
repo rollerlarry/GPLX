@@ -1,5 +1,9 @@
 package com.example.itcode.gplx.Activity;
 
+import android.app.AlertDialog;
+import android.app.Application;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +16,7 @@ import com.example.itcode.gplx.Fragment.HomeFragment;
 import com.example.itcode.gplx.Fragment.InfoFragment;
 import com.example.itcode.gplx.Helper.DBHelper;
 import com.example.itcode.gplx.R;
+import com.example.itcode.gplx.Slide.ScreenSlideForExamActivity;
 
 import java.io.IOException;
 
@@ -94,6 +99,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.bell);
+        builder.setTitle("Thông báo");
+        builder.setMessage("Bạn có muốn thoát ứng dụng không ?");
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finishAffinity();
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
+            }
+        });
+        builder.show();
     }
 }
